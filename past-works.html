@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akmal Faqih - Past Works</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #FF3B30;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .nav a.active {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .work-item {
+            margin-bottom: 2rem;
+        }
+
+        .work-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            text-decoration: underline;
+            font-weight: normal;
+        }
+
+        .work-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .more-works {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-top: 4rem;
+            font-family: 'Cormorant Garamond', serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: text-decoration 0.3s ease;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .more-works:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">AKMAL FAQIH</a></div>
+        <nav class="nav">
+            <a href="about-me.html">About Me</a>
+            <a href="#" class="active">Past Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <h1>Highlights of My Work</h1>
+
+    <section>
+        <h2 class="section-title">Projects & Leadership</h2>
+        <div class="works-grid">
+            <div class="work-item">
+                <h3>TWG Community</h3>
+                <p>Founder & Project Lead</p>
+                <p>Led team of 8 to develop professional skills program for 27 participants</p>
+            </div>
+            <div class="work-item">
+                <h3>PT Medlab</h3>
+                <p>Social Media Project Manager</p>
+                <p>Increased engagement by 208% and expanded reach to 2,437 accounts</p>
+            </div>
+            <div class="work-item">
+                <h3>Digivolution</h3>
+                <p>Head of Guide</p>
+                <p>Led team of 18 in implementing student orientation program</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="works-grid">
+            <div class="work-item">
+                <h3>Nanno Consulting Firm</h3>
+                <p>Consultant Intern | 2023-2024</p>
+                <p>Led projects in water management, banking, and shipping sectors</p>
+            </div>
+            <div class="work-item">
+                <h3>LMFEB Unpad</h3>
+                <p>Consultant Intern | 2023-2024</p>
+                <p>Developed strategic initiatives and comprehensive analysis</p>
+            </div>
+            <div class="work-item">
+                <h3>Universitas Padjadjaran</h3>
+                <p>Programming Teaching Assistant | 2024</p>
+                <p>Taught Python programming to 99 Digital Business students</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Recent Achievements</h2>
+        <div class="works-grid">
+            <div class="work-item">
+                <h3>DigCofest 2024</h3>
+                <p>1st Place Winner</p>
+                <p>Business Case Competition</p>
+            </div>
+            <div class="work-item">
+                <h3>SEAA-PEREGRINE 2024</h3>
+                <p>2nd Place Winner</p>
+                <p>International Case Competition</p>
+            </div>
+            <div class="work-item">
+                <h3>Commweek Competition</h3>
+                <p>1st Place Winner</p>
+                <p>Marketing Communication Competition</p>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://bit.ly/PortofolioAkmalf" class="more-works" target="_blank">...and many more achievements!</a>
+</body>
+</html> 
