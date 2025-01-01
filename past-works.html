@@ -9,24 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --primary-color: #FF3B30;
-            --text-color: #333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Additional styles to match the image design */
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            color: #333;
         }
 
         .header {
@@ -42,157 +31,293 @@
             font-weight: 600;
         }
 
-        .nav a {
-            margin-left: 2rem;
-            text-decoration: none;
-            color: var(--text-color);
-        }
-
-        .nav a.active {
-            text-decoration: underline;
-        }
-
         h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 4rem;
-            color: var(--primary-color);
-            margin-bottom: 4rem;
+            color: #FF3B30;
+            margin-bottom: 2rem;
         }
 
         .section-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
+            color: #FF3B30;
             margin-bottom: 2rem;
-            color: var(--text-color);
+            font-weight: normal;
         }
 
-        .works-grid {
+        .work-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            gap: 2rem;
             margin-bottom: 4rem;
         }
 
         .work-item {
-            margin-bottom: 2rem;
+            border: none;
+            padding: 0;
+            box-shadow: none;
         }
 
         .work-item h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
-            text-decoration: underline;
             font-weight: normal;
+            text-decoration: underline;
         }
 
         .work-item p {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 0.5rem;
-            font-family: 'Inter', sans-serif;
+        }
+
+        .journal-source {
+            font-size: 0.8rem;
+            color: #888;
+            font-style: italic;
         }
 
         .more-works {
             text-align: center;
-            color: var(--primary-color);
+            color: #FF3B30;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             margin-top: 4rem;
-            font-family: 'Cormorant Garamond', serif;
-            cursor: pointer;
-            text-decoration: none;
-            transition: text-decoration 0.3s ease;
-            display: block;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 4rem;
         }
 
-        .more-works:hover {
+        .more-works a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .more-works a:hover {
             text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
-            .works-grid {
-                grid-template-columns: 1fr;
-            }
+        nav a {
+            margin-left: 2rem;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FF3B30;
+        }
+
+        nav a.active {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">AKMAL FAQIH</a></div>
-        <nav class="nav">
+    <div class="header">
+        <div class="logo">AKMAL FAQIH</div>
+        <nav>
             <a href="about-me.html">About Me</a>
             <a href="#" class="active">Past Works</a>
-            <a href="#contact">Contact</a>
+            <a href="contact.html">Contact</a>
         </nav>
-    </header>
+    </div>
 
     <h1>Highlights of My Work</h1>
 
     <section>
-        <h2 class="section-title">Projects & Leadership</h2>
-        <div class="works-grid">
+        <h2 class="section-title">Consulting Projects</h2>
+        <div class="work-grid">
             <div class="work-item">
-                <h3>TWG Community</h3>
+                <h3>MSME Partnership Evaluation</h3>
+                <p>Kajian efektivitas pelaksana kemitraan usaha UMKM</p>
+                <p class="key-points">• Mixed-method research with SEM-PLS analysis</p>
+                <p class="key-points">• Focus group discussions and quantitative analysis</p>
+                <p class="key-points">• Created comprehensive consulting pitch deck</p>
+                <span class="date">2023</span>
+            </div>
+
+            <div class="work-item">
+                <h3>Economic Development Program Impact</h3>
+                <p>Kajian Dampak Program Pengembangan Ekonomi dan Keuangan Inklusif</p>
+                <p class="key-points">• Analyzed program outcomes in four regions</p>
+                <p class="key-points">• Evaluated financial services access and entrepreneurship</p>
+                <p class="key-points">• Created actionable recommendations</p>
+                <span class="date">2023</span>
+            </div>
+
+            <div class="work-item">
+                <h3>Tirta Wibawa Mukti Business Plan</h3>
+                <p>Rencana Induk Bisnis Perumda Tirta Wibawa Mukti</p>
+                <p class="key-points">• Conducted internal analysis</p>
+                <p class="key-points">• Developed six key strategies (A to F)</p>
+                <p class="key-points">• Multi-criteria scoring implementation</p>
+                <span class="date">2023</span>
+            </div>
+
+            <div class="work-item">
+                <h3>Tirtawening Business Unit Evaluation</h3>
+                <p>Evaluasi Kinerja Unit Bisnis Perumda Tirtawening</p>
+                <p class="key-points">• Balanced scorecard assessment</p>
+                <p class="key-points">• PEST and Porter's Five Forces analyses</p>
+                <p class="key-points">• Comprehensive benchmarking study</p>
+                <span class="date">2023</span>
+            </div>
+
+            <div class="work-item">
+                <h3>Smart Ferizy Lounge Development</h3>
+                <p>Implementasi Pengembangan Aset Kapal Smart Ferizy Lounge</p>
+                <p class="key-points">• Customer needs analysis</p>
+                <p class="key-points">• Service development strategy</p>
+                <p class="key-points">• Marketing optimization planning</p>
+                <span class="date">2024</span>
+            </div>
+
+            <div class="work-item">
+                <h3>Tirtawening Strategic Portfolio Analysis</h3>
+                <p>Kajian Analisis Portofolio Proyek Strategis Perumda Tirtawening</p>
+                <p class="key-points">• Financial modeling for eight initiatives</p>
+                <p class="key-points">• Strategic recommendations development</p>
+                <p class="key-points">• Leadership alignment meetings</p>
+                <span class="date">2024</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Business Competition Projects</h2>
+        <div class="work-grid">
+            <div class="work-item">
+                <h3>Nile~Impact Strategy</h3>
+                <p>CIB Sustainable Financial Instrument Launch Strategy</p>
+                <p class="key-points">• Egyptian financial ecosystem analysis</p>
+                <p class="key-points">• 6-year implementation timeline</p>
+                <p class="key-points">• Green bond initiative expansion</p>
+                <span class="achievement-tag">IIBD International Case Competition</span>
+                <span class="date">2024</span>
+            </div>
+
+            <div class="work-item">
+                <h3>I.C.E Strategy</h3>
+                <p>IKEA 2030 Sustainability Goals Strategy</p>
+                <p class="key-points">• Led three-member team</p>
+                <p class="key-points">• Sustainability and circular economy focus</p>
+                <p class="key-points">• 5-year implementation timeline</p>
+                <span class="achievement-tag">6th Place - SxC International</span>
+                <span class="date">2024</span>
+            </div>
+
+            <div class="work-item">
+                <h3>WATER Strategy</h3>
+                <p>Mexico Water Crisis Solution</p>
+                <p class="key-points">• Macro-level research</p>
+                <p class="key-points">• Comprehensive risk analysis</p>
+                <p class="key-points">• Sustainable management focus</p>
+                <span class="achievement-tag">IIBD International</span>
+                <span class="date">2024</span>
+            </div>
+
+            <div class="work-item">
+                <h3>ENRICH Strategy</h3>
+                <p>Global Rush Operational Efficiency</p>
+                <p class="key-points">• Supply chain optimization</p>
+                <p class="key-points">• ERP implementation strategy</p>
+                <p class="key-points">• Customer satisfaction enhancement</p>
+                <span class="achievement-tag">Top 8 - ASMC International</span>
+                <span class="date">2024</span>
+            </div>
+
+            <div class="work-item">
+                <h3>PIE Strategy</h3>
+                <p>Bloomery Patisserie Market Optimization</p>
+                <p class="key-points">• Market analysis and positioning</p>
+                <p class="key-points">• ERP system implementation</p>
+                <p class="key-points">• Strategic venue expansion</p>
+                <span class="achievement-tag">9th Place - CREATICISM</span>
+                <span class="date">2024</span>
+            </div>
+
+            <div class="work-item">
+                <h3>MTI Strategy</h3>
+                <p>Bobobox Sustainability Implementation</p>
+                <p class="key-points">• #DariBoboboxUntukBumi campaign</p>
+                <p class="key-points">• Theory of Change implementation</p>
+                <p class="key-points">• Environmental impact analysis</p>
+                <span class="achievement-tag">11th Place</span>
+                <span class="date">2024</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Organizational Experience</h2>
+        <div class="work-grid">
+            <div class="work-item">
+                <h3>Together We Grow Community</h3>
                 <p>Founder & Project Lead</p>
-                <p>Led team of 8 to develop professional skills program for 27 participants</p>
+                <p class="key-points">• Led 7 structured training sessions</p>
+                <p class="key-points">• Engaged 27 community participants</p>
+                <p class="key-points">• Secured strategic partnerships with Learnitab and Whizz</p>
+                <p class="key-points">• Collaborated with 9 core initiators</p>
+                <span class="date">Oct 2024 - Dec 2024</span>
+                <span class="achievement-tag">Founder</span>
             </div>
+
             <div class="work-item">
-                <h3>PT Medlab</h3>
+                <h3>HIMAGI Unpad</h3>
+                <p>Head of Cader - Kabinet Reformasi</p>
+                <p class="key-points">• Managed 7 work programs</p>
+                <p class="key-points">• Introduced 2 innovative programs</p>
+                <p class="key-points">• Set standards for departmental discipline</p>
+                <span class="date">Feb 2024 - Nov 2024</span>
+                <span class="achievement-tag">Department Head</span>
+            </div>
+
+            <div class="work-item">
+                <h3>HIMAGI Unpad</h3>
+                <p>Vice Head of Cader - Kabinet Gelora Makna</p>
+                <p class="key-points">• Led 6-member staff team</p>
+                <p class="key-points">• Executed 7 successful work programs</p>
+                <p class="key-points">• Won HIMAGI Best Work Program Award</p>
+                <span class="date">Feb 2023 - Nov 2023</span>
+                <span class="achievement-tag">Best Program Award</span>
+            </div>
+
+            <div class="work-item">
+                <h3>Digital Business Unpad</h3>
+                <p>Computer Programming Teaching Assistant</p>
+                <p class="key-points">• Created 10 comprehensive presentations</p>
+                <p class="key-points">• Led offline teaching sessions</p>
+                <p class="key-points">• Covered Python and C++ fundamentals</p>
+                <span class="date">Jan 2024 - June 2024</span>
+                <span class="achievement-tag">Academic Support</span>
+            </div>
+
+            <div class="work-item">
+                <h3>Medika Antapani</h3>
                 <p>Social Media Project Manager</p>
-                <p>Increased engagement by 208% and expanded reach to 2,437 accounts</p>
+                <p class="key-points">• Boosted engagement by 208%</p>
+                <p class="key-points">• Reached 2,437 new accounts</p>
+                <p class="key-points">• Gained 124 new followers</p>
+                <span class="date">Feb 2024 - May 2024</span>
+                <span class="achievement-tag">Growth Achievement</span>
             </div>
+
             <div class="work-item">
-                <h3>Digivolution</h3>
-                <p>Head of Guide</p>
-                <p>Led team of 18 in implementing student orientation program</p>
+                <h3>Market Town Unpad</h3>
+                <p>Head of Business Plan & Case Competition</p>
+                <p class="key-points">• Led 8 cross-faculty staff members</p>
+                <p class="key-points">• Secured partnership with Bobobox</p>
+                <p class="key-points">• Achieved 200%+ participation growth</p>
+                <span class="date">May 2023 - Nov 2023</span>
+                <span class="achievement-tag">Record Growth</span>
             </div>
         </div>
     </section>
 
-    <section>
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="works-grid">
-            <div class="work-item">
-                <h3>Nanno Consulting Firm</h3>
-                <p>Consultant Intern | 2023-2024</p>
-                <p>Led projects in water management, banking, and shipping sectors</p>
-            </div>
-            <div class="work-item">
-                <h3>LMFEB Unpad</h3>
-                <p>Consultant Intern | 2023-2024</p>
-                <p>Developed strategic initiatives and comprehensive analysis</p>
-            </div>
-            <div class="work-item">
-                <h3>Universitas Padjadjaran</h3>
-                <p>Programming Teaching Assistant | 2024</p>
-                <p>Taught Python programming to 99 Digital Business students</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2 class="section-title">Recent Achievements</h2>
-        <div class="works-grid">
-            <div class="work-item">
-                <h3>DigCofest 2024</h3>
-                <p>1st Place Winner</p>
-                <p>Business Case Competition</p>
-            </div>
-            <div class="work-item">
-                <h3>SEAA-PEREGRINE 2024</h3>
-                <p>2nd Place Winner</p>
-                <p>International Case Competition</p>
-            </div>
-            <div class="work-item">
-                <h3>Commweek Competition</h3>
-                <p>1st Place Winner</p>
-                <p>Marketing Communication Competition</p>
-            </div>
-        </div>
-    </section>
-
-    <a href="https://bit.ly/PortofolioAkmalf" class="more-works" target="_blank">...and many more achievements!</a>
+    <div class="more-works">
+        <a href="https://bit.ly/PortofolioAkmalf" target="_blank">...and many more!</a>
+    </div>
 </body>
 </html> 
