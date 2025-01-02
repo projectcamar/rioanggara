@@ -266,6 +266,73 @@
                 margin: 0 1rem;
             }
         }
+
+        /* Add these new styles in your existing style section */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 1000;
+        }
+
+        .chat-header {
+            padding: 15px;
+            background: var(--pwc-orange);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid var(--pwc-grey-15);
+        }
+
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.2);
+            z-index: 1000;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background: var(--pwc-grey-15);
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: var(--pwc-yellow);
+            opacity: 0.8;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>
@@ -281,7 +348,7 @@
     </header>
 
     <main class="container contact-section">
-        <h1>Let's Connect</h1>
+        <h1>Let's Connects</h1>
         <p class="subtitle">I'm always interested in hearing about new opportunities and collaborations.</p>
 
         <form class="contact-form" id="contactForm" onsubmit="sendEmail(event)">
@@ -325,9 +392,92 @@ ${message}`)}`;
         }
     </script>
 
+    <script type="module">
+        import { HuggingFaceInferenceEmbeddings } from 'https://esm.sh/@langchain/community/embeddings/hf';
+        import { HuggingFaceInference } from 'https://esm.sh/@langchain/community/llms/hf';
+        
+        const model = new HuggingFaceInference({
+            model: "gpt2", // You can use other free models like "facebook/opt-125m"
+            temperature: 0.7,
+            maxTokens: 50
+        });
+
+        async function generateResponse(input) {
+            try {
+                const response = await model.call(input);
+                return response;
+            } catch (error) {
+                console.error('Error:', error);
+                return "I apologize, but I'm having trouble generating a response right now.";
+            }
+        }
+
+        // Make the function available globally
+        window.generateResponse = generateResponse;
+    </script>
+
+    <script>
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            // Add user message to chat
+            addMessage(message, 'user');
+            input.value = '';
+
+            try {
+                // Show typing indicator
+                const loadingMessage = 'Thinking...';
+                addMessage(loadingMessage, 'bot');
+
+                // Get response from model
+                const response = await generateResponse(message);
+
+                // Remove loading message and add actual response
+                const messages = document.getElementById('chatMessages');
+                messages.removeChild(messages.lastChild);
+                addMessage(response, 'bot');
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+            }
+        }
+
+        // ... rest of your existing chat UI code ...
+    </script>
+
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable F11 and developer tools
+        document.addEventListener('keydown', function(e) {
+            // Disable F11
+            if (e.keyCode == 122) {
+                e.preventDefault();
+            }
+            
+            // Disable Ctrl+U (view source)
+            if (e.ctrlKey && e.keyCode == 85) {
+                e.preventDefault();
+            }
+            
+            // Disable Ctrl+Shift+I and F12 (developer tools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                e.preventDefault();
+            }
+            if (e.keyCode == 123) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html> 

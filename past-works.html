@@ -478,5 +478,32 @@
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable F11 and developer tools
+        document.addEventListener('keydown', function(e) {
+            // Disable F11
+            if (e.keyCode == 122) {
+                e.preventDefault();
+            }
+            
+            // Disable Ctrl+U (view source)
+            if (e.ctrlKey && e.keyCode == 85) {
+                e.preventDefault();
+            }
+            
+            // Disable Ctrl+Shift+I and F12 (developer tools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                e.preventDefault();
+            }
+            if (e.keyCode == 123) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html> 
