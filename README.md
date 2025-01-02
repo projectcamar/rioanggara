@@ -1,4 +1,4 @@
-# Akmal Faqih Portfolio
+# Portfolio Rio
 
 Personal portfolio website showcasing my professional experience, achievements, and projects.
 
