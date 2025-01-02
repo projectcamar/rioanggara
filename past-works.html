@@ -60,6 +60,7 @@
             color: var(--pwc-grey-90);
             position: relative;
             padding-left: 15px;
+            text-decoration: none;
         }
 
         .logo::before {
@@ -238,11 +239,27 @@
             text-decoration: none;
             font-family: 'ITC Charter Black', serif;
             font-size: 2rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .more-works a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--pwc-orange);
+            transition: width 0.3s;
         }
 
         .more-works a:hover {
             color: var(--pwc-tangerine);
+        }
+
+        .more-works a:hover::after {
+            width: 100%;
         }
 
         /* Background decorative elements */
@@ -311,7 +328,7 @@
 <body>
     <header>
         <div class="container nav">
-            <div class="logo">RIO ANGGARA</div>
+            <a href="index.html" class="logo">RIO ANGGARA</a>
             <div class="nav-links">
                 <a href="about-me.html">About Me</a>
                 <a href="past-works.html" class="active">Past Works</a>
@@ -453,7 +470,7 @@
         </section>
 
         <div class="more-works">
-            <a href="https://bit.ly/PortofolioAkmalf" target="_blank">...and many more!</a>
+            <a href="https://bit.ly/PortofolioRio-2025" target="_blank">...and many more!</a>
         </div>
     </main>
 </body>
