@@ -1838,203 +1838,848 @@
         .floating-chat-input input:focus::placeholder {
             opacity: 0.5;
         }
+
+        /* Add subtle inner shadow for depth */
+        .input-group input,
+        .floating-chat-input input {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Remove inner shadow on focus */
+        .input-group input:focus,
+        .floating-chat-input input:focus {
+            box-shadow: none;
+        }
+
+        /* Add transition for the send button */
+        #sendButton,
+        .floating-chat-input button {
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(208, 74, 2, 0.2);
+        }
+
+        #sendButton:hover,
+        .floating-chat-input button:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.3);
+        }
+
+        #sendButton:active,
+        .floating-chat-input button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(208, 74, 2, 0.2);
+        }
+
+        /* Add these new styles for the gate system */
+        #gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white; /* Revert to white background */
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            text-align: center;
+            overflow: hidden; /* Hide overflowing pseudo-elements */
+        }
+
+        /* Add geometric background shapes */
+        #gate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--pwc-orange) 48%, var(--pwc-orange) 52%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--pwc-yellow) 48%, var(--pwc-yellow) 52%, transparent 52%);
+            background-size: 100px 100px;
+            opacity: 0.05; /* Subtle opacity */
+            z-index: 1; /* Behind the content */
+        }
+
+        #gate::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                 linear-gradient(90deg, transparent 47%, var(--pwc-rose) 47%, var(--pwc-rose) 53%, transparent 53%),
+                 linear-gradient(0deg, transparent 47%, var(--pwc-tangerine) 47%, var(--pwc-tangerine) 53%, transparent 53%);
+            background-size: 80px 80px;
+            opacity: 0.04; /* Subtle opacity */
+            z-index: 1; /* Behind the content */
+        }
+
+        #gate > div {
+            position: relative; /* Position content above pseudo-elements */
+            z-index: 2;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        #gate a {
+            position: relative;
+        }
+
+        #gate a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pwc-orange);
+            transition: width 0.3s ease;
+        }
+
+        #gate a:hover::after {
+            width: 100%;
+        }
+
+        .gate-input-container {
+            margin-bottom: 1rem;
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            border: 1px solid var(--pwc-grey-15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto; /* Center the block element */
+        }
+
+        .gate-input-container > div {
+             display: flex;
+             width: 100%;
+             gap: 1rem;
+             align-items: center;
+             justify-content: center; /* Center contents horizontally */
+        }
+
+        .gate-input-container input {
+            flex: 1;
+            padding: 0.85rem 1.2rem;
+            border: 2px solid var(--pwc-grey-15);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            padding-right: 40px;
+            min-width: 0; /* Allow flex item to shrink below content size */
+        }
+
+        .gate-input-container input:focus {
+            outline: none;
+            border-color: var(--pwc-orange);
+            box-shadow: 0 0 0 3px rgba(208, 74, 2, 0.1);
+        }
+
+        .gate-button {
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            min-width: 120px;
+        }
+
+        .gate-button:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.2);
+        }
+
+        #wrong {
+            color: var(--pwc-rose);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Style for link within wrong password message */
+        #wrong a {
+            color: var(--pwc-orange); /* Match link color */
+            text-decoration: none; /* Remove default underline */
+            position: relative;
+            font-weight: 500;
+        }
+
+        #wrong a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pwc-orange);
+            transition: width 0.3s ease;
+        }
+
+        #wrong a:hover::after {
+            width: 100%;
+        }
+
+        /* Style for the toggle password icon */
+        #togglePassword {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--pwc-grey-55);
+            transition: color 0.3s ease;
+        }
+
+        #togglePassword:hover {
+            color: var(--pwc-orange);
+        }
+
+        /* Add decorative elements - Keep the existing ones as they complement the new background */
+        #gate::before {
+            content: '';
+            position: absolute;
+            right: -5%;
+            top: -5%;
+            width: 200px;
+            height: 200px;
+            background: var(--pwc-yellow);
+            opacity: 0.1;
+            border-radius: 0 0 0 100%;
+        }
+
+        #gate::after {
+            content: '';
+            position: absolute;
+            left: -2%;
+            bottom: -2%;
+            width: 150px;
+            height: 150px;
+            background: var(--pwc-rose);
+            opacity: 0.1;
+            border-radius: 0 100% 0 0;
+        }
+
+        /* Add animation for the gate */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #gate {
+                padding: 1rem; /* Adjust padding for smaller screens */
+            }
+
+            #gate h2 {
+                font-size: 2rem; /* Slightly smaller title on mobile */
+                padding-left: 15px; /* Adjust padding for the accent bar */
+            }
+
+            #gate h2 div {
+                 top: 18%; /* Adjust accent bar position */
+                 height: 65%;
+            }
+
+            #gate p {
+                font-size: 1rem; /* Slightly smaller text on mobile */
+                line-height: 1.6; /* Adjust line height */
+            }
+
+            .gate-input-container {
+                padding: 1rem; /* Adjust padding inside the container */
+            }
+
+            .gate-input-container > div {
+                flex-direction: column; /* Stack input and button vertically */
+                gap: 0.75rem; /* Adjust gap when stacked */
+                align-items: stretch; /* Stretch items to fill width */
+            }
+
+            .gate-input-container input {
+                 padding: 0.75rem 1rem; /* Adjust input padding */
+                 padding-right: 35px; /* Adjust padding for the eye icon */
+            }
+
+            #togglePassword {
+                right: 8px; /* Adjust eye icon position */
+            }
+
+            .gate-button {
+                width: 100%; /* Make button full width when stacked */
+                min-width: auto; /* Remove min-width constraint */
+                padding: 0.75rem 1rem; /* Adjust button padding */
+            }
+
+            #wrong {
+                font-size: 0.85rem; /* Slightly smaller error text */
+            }
+
+            /* Adjust decorative elements for smaller screens if needed */
+            #gate::before {
+                width: 150px;
+                height: 150px;
+                right: -10%;
+                top: -10%;
+            }
+
+            #gate::after {
+                width: 100px;
+                height: 100px;
+                left: -5%;
+                bottom: -5%;
+            }
+        }
+
+        /* You already have a media query for very small screens, let's keep it and refine */
+        @media (max-width: 480px) {
+            #gate h2 {
+                font-size: 1.8rem;
+            }
+
+            #gate p {
+                font-size: 0.95rem;
+            }
+
+            .gate-input-container {
+                 padding: 0.75rem;
+            }
+
+            .gate-input-container > div {
+                gap: 0.5rem;
+            }
+
+            .gate-input-container input {
+                padding: 0.6rem 0.8rem;
+                padding-right: 30px;
+            }
+
+            #togglePassword {
+                right: 6px;
+                font-size: 0.9rem;
+            }
+
+             .gate-button {
+                padding: 0.6rem 0.8rem;
+            }
+
+            /* Further adjust decorative elements for very small screens */
+            #gate::before {
+                width: 100px;
+                height: 100px;
+            }
+
+            #gate::after {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        #main-content {
+            display: none;
+        }
+
+        /* Styles for the floating supportive message */
+        #supportiveMessage {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--pwc-yellow); /* Use one of your brand colors */
+            color: var(--pwc-grey-90);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 9999; /* High z-index to be on top */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        #supportiveMessage.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+            #supportiveMessage {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Styles for the floating supportive message container */
+        #supportiveMessagesContainer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999; /* High z-index */
+            display: flex;
+            flex-direction: column-reverse; /* Stack items from bottom up */
+            align-items: flex-end; /* Align items to the right */
+            gap: 10px; /* Space between stacked messages */
+            pointer-events: none; /* Allow clicks to pass through the container */
+        }
+
+        /* Styles for individual floating supportive messages */
+        .supportive-message {
+            background: var(--pwc-yellow); /* Use one of your brand colors */
+            color: var(--pwc-grey-90);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            max-width: 250px; /* Limit width */
+            word-wrap: break-word; /* Prevent overflow */
+            pointer-events: auto; /* Allow clicks on the message itself if needed (though not interactive here) */
+        }
+
+        .supportive-message.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+             #supportiveMessagesContainer {
+                bottom: 10px;
+                right: 10px;
+                gap: 5px;
+            }
+            .supportive-message {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                 max-width: 200px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container nav">
-            <div class="logo">RIO ANGGARA</div>
-            <div class="nav-links">
-                <a href="about-me.html">My Journey</a>
-                <a href="past-works.html">Portfolio</a>
-                <a href="contact.html">Let's Connect</a>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero container">
-        <div class="hero-content">
-            <h1>Rio Anggara</h1>
-            <p>I am an International Business student at Universitas Padjadjaran with a focus on product development and business strategy. I combine academic excellence with practical experience in investment, banking, and technology sectors.</p>
-            <p>Based in Jakarta, Indonesia, I'm passionate about creating innovative solutions and driving business growth through strategic thinking and technology.</p>
-            <a href="#chat-section" class="btn">Get in touch & Ask Rio Anything</a>
-        </div>
-        <div class="hero-image">
-            <img src="assets/foto-akmal.jpeg" alt="Rio Anggara" />
-            <div class="squares">
-                <div class="square-1"></div>
-                <div class="square-2"></div>
-                <div class="square-3"></div>
-                <div class="square-4"></div>
-                <div class="square-5"></div>
-                <div class="square-6"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="areas">
-        <div class="container">
-            <h2 class="section-title">Field of Interest</h2>
-            <div class="experience-grid">
-                <div class="experience-item">
-                    <h3>Product Development</h3>
-                    <p>I develop and implement strategic solutions in investment and technology, specializing in digital banking products and browser extensions. Currently leading Learnitab, an EdTech platform helping students in career preparation.</p>
-                </div>
-                <div class="experience-item">
-                    <h3>Business Strategy</h3>
-                    <p>I lead initiatives in business development and strategic planning, with proven success in international business competitions and consulting projects. Notable achievements include winning ISMC 2024 and Wall Street Business Challenge.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="education-accolades container">
-        <div class="education">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-                <h3><a href="https://www.unpad.ac.id/" class="hover-link">Universitas Padjadjaran</a></h3>
-                <p class="subtitle">BSc in International Business (2020-2025)</p>
-                <p>GPA: 3.72/4.00</p>
-            </div>
-            <div class="education-item">
-                <h3><a href="https://www.ajou.ac.kr/en/index.do" class="hover-link">Ajou University</a></h3>
-                <p class="subtitle">Exchange Program (2024)</p>
-                <p>GPA: 81.7/100</p>
-            </div>
-        </div>
-        <div class="accolades">
-            <h2 class="section-title">Recent Achievements</h2>
-            <div class="accolade-item">
-                <h3><a href="https://yli.or.id" class="hover-link">Young Leaders for Indonesia</a></h3>
-                <p>McKinsey & Company Leadership Program</p>
-            </div>
-            <div class="accolade-item">
-                <h3><a href="https://cleanrecyclinginitiative.com/competition/" class="hover-link">International Competition Winner</a></h3>
-                <p>ISMC 2024 & Wall Street Business Challenge</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="experience">
-        <div class="container">
-            <h2 class="section-title">Key Experiences</h2>
-            <div class="work-grid">
-                <div class="work-item" onclick="window.location.href='https://learnitab.com'">
-                    <h3>Founder & Product Owner</h3>
-                    <p>Learnitab | Jun 2024 - Present</p>
-                    <p class="key-points">Leading development of an EdTech browser extension platform, achieving 150+ downloads and 270% growth in user engagement.</p>
-                </div>
-
-                <div class="work-item" onclick="window.location.href='https://jago.com'">
-                    <h3>Product Intern</h3>
-                    <p>Bank Jago | Aug 2024 - Feb 2024</p>
-                    <p class="key-points">Driving product strategy and development across key banking functions, with focus on digital transformation and customer experience.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="chat-section" class="chat-section container">
-        <h2 class="chat-title">Chat with Rio Anggara AI to know more!</h2>
-        <div class="chat-container">
-            <div class="chat-main-wrapper">
-                <div class="quick-buttons">
-                    <div class="context-header">
-                        <span>Question Box</span>
-                        <button class="minimize-question-box">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
+    <!-- Add the gate system -->
+    <div id="gate">
+        <div style="text-align: center; max-width: 800px; padding: 0 2rem;">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--pwc-grey-90); margin-bottom: 1.5rem; position: relative; padding-left: 20px;">
+                Welcome to Rio's Private Portfolio
+                <div style="position: absolute; left: 0; top: 15%; height: 70%; width: 6px; background: var(--pwc-orange); border-radius: 3px;"></div>
+            </h2>
+            <p style="color: var(--pwc-grey-55); margin-bottom: 2rem; line-height: 1.8; font-family: 'Inter', sans-serif; font-size: 1.1rem;">
+                Hi and thank you for stopping by! This page is specially made for <strong>HR professionals and selected guests</strong>. If you're here after <strong>receiving my CV</strong>, you'll find the <strong>password included there</strong> to <strong>unlock the full content</strong>.
+                <br><br>
+                If you're not an HR professional or didn't receive an invitation but are still interested in my work, I'd love to connect — feel free to reach out via <a href="https://www.linkedin.com/in/rionggara/" target="_blank" style="color: var(--pwc-orange); text-decoration: none; font-weight: 500; position: relative;">LinkedIn</a> anytime.
+                <br><br>
+                Thanks again for your interest 🙌
+            </p>
+            <div class="gate-input-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); border: 1px solid var(--pwc-grey-15); display: flex; flex-direction: column; align-items: center; margin: 0 auto; max-width: 400px; width: 100%;">
+                <div style="display: flex; width: 100%; gap: 1rem; align-items: center; justify-content: center;">
+                    <div style="position: relative; flex: 1; min-width: 0;">
+                        <input type="password" id="passwordInput" placeholder="Enter password" style="font-family: 'Inter', sans-serif; font-size: 1rem; width: 100%; padding-right: 40px;">
+                        <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--pwc-grey-55);">
+                            <i class="fas fa-eye"></i>
+                        </span>
                     </div>
-                    <div class="questions-container">
-                        <button class="quick-btn" onclick="askQuestion('Who is Rio Anggara?')">
-                            Who is Rio Anggara?
-                            <span class="question-category">Profile</span>
-                        </button>
-                        <button class="quick-btn" onclick="askQuestion('What are Rio\'s technical skills?')">
-                            What are Rio's technical skills?
-                            <span class="question-category">Skills</span>
-                        </button>
-                        <button class="quick-btn" onclick="askQuestion('What projects has Rio worked on?')">
-                            What projects has Rio worked on?
-                            <span class="question-category">Projects</span>
-                        </button>
-                        <button class="quick-btn" onclick="askQuestion('What is Rio\'s educational background?')">
-                            What is Rio's education?
-                            <span class="question-category">Education</span>
-                        </button>
-                        <button class="quick-btn" onclick="askQuestion('How can I contact Rio?')">
-                            How can I contact Rio?
-                            <span class="question-category">Contact</span>
-                        </button>
-                        <button class="quick-btn" onclick="askQuestion('What is Rio\'s work experience?')">
-                            What is Rio's work experience?
-                            <span class="question-category">Experience</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="chat-main">
-                    <div class="chat-header">
-                        <div class="bot-profile">
-                            <img src="assets/foto-akmal.jpeg" alt="Rio AI" class="bot-avatar">
-                            <div class="bot-info">
-                                <h4>Rio AI Assistant</h4>
-                                <span class="status">Online</span>
-                            </div>
-                        </div>
-                        <div class="chat-actions">
-                            <button class="clear-chat" onclick="clearChat()">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="chatMessages"></div>
-                    <div class="chat-input-container">
-                        <div class="input-group">
-                            <input type="text" id="userInput" placeholder="Ask something here...">
-                            <button id="sendButton" onclick="sendMessage()">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        <p class="disclaimer">Note: AI responses may not always be accurate... that's why you should interview the real Rio instead! 😉</p>
-                        <div class="typing-indicator" style="display: none;">
-                            <span></span><span></span><span></span>
-                        </div>
-                    </div>
+                    <button class="gate-button" onclick="checkPassword()" style="font-family: 'Inter', sans-serif; font-weight: 500;">Enter</button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>Connect with me</p>
-            <div class="social-links">
-                <a href="contact.html"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/rionggara"><i class="fab fa-linkedin"></i></a>
-                <a href="https://bit.ly/PortofolioRio-2025"><i class="fas fa-folder"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <div class="floating-chat">
-        <div class="floating-chat-header">
-            <img src="assets/foto-akmal.jpeg" alt="Rio AI">
-            <div class="floating-chat-header-text">
-                <h4>Chat with Rio AI</h4>
-                <p>Ask me anything!</p>
-            </div>
-            <button class="minimize-btn">
-                <i class="fas fa-chevron-down"></i>
-            </button>
-        </div>
-        <div class="floating-chat-input">
-            <input type="text" placeholder="Type your question..." id="floatingInput">
-            <button onclick="handleFloatingChat()">
-                <i class="fas fa-arrow-right"></i>
-            </button>
+            <p id="wrong" style="font-family: 'Inter', sans-serif; margin-top: 1rem;"></p>
         </div>
     </div>
+
+    <!-- Container for floating supportive messages -->
+    <div id="supportiveMessagesContainer"></div>
+
+    <div id="main-content">
+        <header>
+            <div class="container nav">
+                <div class="logo">RIO ANGGARA</div>
+                <div class="nav-links">
+                    <a href="about-me.html">My Journey</a>
+                    <a href="past-works.html">Portfolio</a>
+                    <a href="contact.html">Let's Connect</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero container">
+            <div class="hero-content">
+                <h1>Rio Anggara</h1>
+                <p>I am an International Business student at Universitas Padjadjaran with a focus on product development and business strategy. I combine academic excellence with practical experience in investment, banking, and technology sectors.</p>
+                <p>Based in Jakarta, Indonesia, I'm passionate about creating innovative solutions and driving business growth through strategic thinking and technology.</p>
+                <a href="#chat-section" class="btn">Get in touch & Ask Rio Anything</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/foto-akmal.jpeg" alt="Rio Anggara" />
+                <div class="squares">
+                    <div class="square-1"></div>
+                    <div class="square-2"></div>
+                    <div class="square-3"></div>
+                    <div class="square-4"></div>
+                    <div class="square-5"></div>
+                    <div class="square-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="areas">
+            <div class="container">
+                <h2 class="section-title">Field of Interest</h2>
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <h3>Product Development</h3>
+                        <p>I develop and implement strategic solutions in investment and technology, specializing in digital banking products and browser extensions. Currently leading Learnitab, an EdTech platform helping students in career preparation.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Business Strategy</h3>
+                        <p>I lead initiatives in business development and strategic planning, with proven success in international business competitions and consulting projects. Notable achievements include winning ISMC 2024 and Wall Street Business Challenge.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="education-accolades container">
+            <div class="education">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <h3><a href="https://www.unpad.ac.id/" class="hover-link">Universitas Padjadjaran</a></h3>
+                    <p class="subtitle">BSc in International Business (2020-2025)</p>
+                    <p>GPA: 3.72/4.00</p>
+                </div>
+                <div class="education-item">
+                    <h3><a href="https://www.ajou.ac.kr/en/index.do" class="hover-link">Ajou University</a></h3>
+                    <p class="subtitle">Exchange Program (2024)</p>
+                    <p>GPA: 81.7/100</p>
+                </div>
+            </div>
+            <div class="accolades">
+                <h2 class="section-title">Recent Achievements</h2>
+                <div class="accolade-item">
+                    <h3><a href="https://yli.or.id" class="hover-link">Young Leaders for Indonesia</a></h3>
+                    <p>McKinsey & Company Leadership Program</p>
+                </div>
+                <div class="accolade-item">
+                    <h3><a href="https://cleanrecyclinginitiative.com/competition/" class="hover-link">International Competition Winner</a></h3>
+                    <p>ISMC 2024 & Wall Street Business Challenge</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience">
+            <div class="container">
+                <h2 class="section-title">Key Experiences</h2>
+                <div class="work-grid">
+                    <div class="work-item" onclick="window.location.href='https://learnitab.com'">
+                        <h3>Founder & Product Owner</h3>
+                        <p>Learnitab | Jun 2024 - Present</p>
+                        <p class="key-points">Leading development of an EdTech browser extension platform, achieving 150+ downloads and 270% growth in user engagement.</p>
+                    </div>
+
+                    <div class="work-item" onclick="window.location.href='https://jago.com'">
+                        <h3>Product Intern</h3>
+                        <p>Bank Jago | Aug 2024 - Feb 2024</p>
+                        <p class="key-points">Driving product strategy and development across key banking functions, with focus on digital transformation and customer experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chat-section" class="chat-section container">
+            <h2 class="chat-title">Chat with Rio Anggara AI to know more!</h2>
+            <div class="chat-container">
+                <div class="chat-main-wrapper">
+                    <div class="quick-buttons">
+                        <div class="context-header">
+                            <span>Question Box</span>
+                            <button class="minimize-question-box">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                        <div class="questions-container">
+                            <button class="quick-btn" onclick="askQuestion('Who is Rio Anggara?')">
+                                Who is Rio Anggara?
+                                <span class="question-category">Profile</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What are Rio\'s technical skills?')">
+                                What are Rio's technical skills?
+                                <span class="question-category">Skills</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What projects has Rio worked on?')">
+                                What projects has Rio worked on?
+                                <span class="question-category">Projects</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What is Rio\'s educational background?')">
+                                What is Rio's education?
+                                <span class="question-category">Education</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('How can I contact Rio?')">
+                                How can I contact Rio?
+                                <span class="question-category">Contact</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What is Rio\'s work experience?')">
+                                What is Rio's work experience?
+                                <span class="question-category">Experience</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-main">
+                        <div class="chat-header">
+                            <div class="bot-profile">
+                                <img src="assets/foto-akmal.jpeg" alt="Rio AI" class="bot-avatar">
+                                <div class="bot-info">
+                                    <h4>Rio AI Assistant</h4>
+                                    <span class="status">Online</span>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="clear-chat" onclick="clearChat()">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="chatMessages"></div>
+                        <div class="chat-input-container">
+                            <div class="input-group">
+                                <input type="text" id="userInput" placeholder="Ask something here...">
+                                <button id="sendButton" onclick="sendMessage()">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <p class="disclaimer">Note: AI responses may not always be accurate... that's why you should interview the real Rio instead! 😉</p>
+                            <div class="typing-indicator" style="display: none;">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>Connect with me</p>
+                <div class="social-links">
+                    <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/rionggara"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://bit.ly/PortofolioRio-2025"><i class="fas fa-folder"></i></a>
+                </div>
+            </div>
+        </footer>
+
+        <div class="floating-chat">
+            <div class="floating-chat-header">
+                <img src="assets/foto-akmal.jpeg" alt="Rio AI">
+                <div class="floating-chat-header-text">
+                    <h4>Chat with Rio AI</h4>
+                    <p>Ask me anything!</p>
+                </div>
+                <button class="minimize-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="floating-chat-input">
+                <input type="text" placeholder="Type your question..." id="floatingInput">
+                <button onclick="handleFloatingChat()">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add the gate system script -->
+    <script>
+        const correctPassword = "riora354"; // Change this to your desired password
+        const gate = document.getElementById("gate");
+        const mainContent = document.getElementById("main-content");
+        const wrong = document.getElementById("wrong");
+        const supportiveMessagesContainer = document.getElementById("supportiveMessagesContainer"); // Get the new container div
+
+        // Get or initialize incorrect password attempt count from localStorage
+        let incorrectAttempts = parseInt(localStorage.getItem('rioIncorrectAttempts') || '0');
+
+        // Array of alternative messages for initial attempts (before 10)
+        const initialWrongMessages = [
+            'Wrong Password, curious enough? <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio personally</a>',
+            'Oops, wrong password. Still curious? Maybe just <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio</a>?',
+            'Hmm, that password didn\'t work either. Don\'t give up! Or... you could just <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio personally</a>.',
+            `That's ${incorrectAttempts} incorrect attempts! Feeling lucky, or ready to <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio</a>?`,
+            `You've tried the password ${incorrectAttempts} times now, seriously still not <a href="https://www.linkedin.com/in/rionggara/" target="_blank">asking Rio personally</a>?`,
+            'Password incorrect again! This is getting tough.. Why not save yourself the trouble and <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio on LinkedIn</a>?',
+            `Attempt number ${incorrectAttempts} failed. Don't let the password win! <a href="https://www.linkedin.com/in/rionggara/" target="_blank">Rio's LinkedIn</a> is just a click away.`, 
+            'Still locked out? This password game is tricky! A quick message to <a href="https://www.linkedin.com/in/rionggara/" target="_blank">Rio</a> might be easier.',
+            'Incorrect password. Perhaps fate is telling you to bypass the gate and <a href="https://www.linkedin.com/in/rionggara/" target="_blank">reach out directly</a>? 😉',
+            'Another wrong one! Maybe the password likes to play hard to get. Rio is much easier to find on <a href="https://www.linkedin.com/in/rionggara/" target="_blank">LinkedIn</a>!',
+            `Still can't crack it after ${incorrectAttempts} tries? Maybe it's a sign to <a href="https://www.linkedin.com/in/rionggara/" target="_blank">message Rio directly</a>!`,
+            'Still here? Impressive persistence! But the fastest way in might be to <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio directly</a>?'
+        ];
+
+        // Array of supportive/teasing messages after 10 attempts
+        const supportiveMessages = [
+            'Take a guess!',
+            'Maybe his favorite food?',
+            'Maybe his mother\'s name?',
+            'Maybe his first company?',
+            'Maybe his cat\'s name?',
+            'Try thinking outside the box!',
+            'Is it something related to his university?',
+            'Could it be a hobby?',
+            'Perhaps a significant year?',
+            'Keep trying, you\'re almost there! (Maybe 😉)'
+        ];
+
+        const threshold = 10; // Number of attempts before supportive messages start
+        const supportiveMessageDuration = 3000; // Duration supportive message is visible (in milliseconds)
+        const fadeDuration = 300; // CSS transition duration for fade/slide
+
+        function checkPassword() {
+            const input = document.getElementById("passwordInput").value;
+            if (input === correctPassword) {
+                // Clear attempts on successful login
+                localStorage.removeItem('rioIncorrectAttempts');
+
+                // Hide any visible wrong messages and remove all supportive messages
+                wrong.innerHTML = '';
+                document.querySelectorAll('.supportive-message').forEach(msg => msg.remove());
+
+                const authData = {
+                    timestamp: new Date().getTime(),
+                    auth: "yes"
+                };
+                localStorage.setItem("rioAuth", JSON.stringify(authData));
+                showContent();
+            } else {
+                // Increment and save attempts
+                incorrectAttempts++;
+                localStorage.setItem('rioIncorrectAttempts', incorrectAttempts);
+
+                // Always display the initial wrong message in the #wrong div
+                const initialMessageIndex = (incorrectAttempts - 1) % initialWrongMessages.length;
+                wrong.innerHTML = initialWrongMessages[initialMessageIndex];
+                
+                // Create and display supportive message in the floating container if threshold is reached
+                if (incorrectAttempts >= threshold) {
+                    const supportiveMessageIndex = (incorrectAttempts - threshold) % supportiveMessages.length;
+                    const messageText = `Attempt #${incorrectAttempts}: ${supportiveMessages[supportiveMessageIndex]}`;
+
+                    const floatingMessage = document.createElement('div');
+                    floatingMessage.classList.add('supportive-message'); // Add a class for styling
+                    floatingMessage.textContent = messageText;
+                    
+                    // Append the new message to the container
+                    supportiveMessagesContainer.appendChild(floatingMessage);
+
+                    // Trigger fade-in animation (needs a small delay to work)
+                    setTimeout(() => { floatingMessage.classList.add('show'); }, 10);
+
+                    // Set timer to remove the message after duration
+                    setTimeout(() => {
+                        floatingMessage.classList.remove('show'); // Trigger fade-out
+                        // Remove element from DOM after fade-out transition ends
+                        setTimeout(() => { floatingMessage.remove(); }, fadeDuration);
+                    }, supportiveMessageDuration);
+
+                } else {
+                    // Ensure any existing supportive messages are removed if attempts drop below threshold (shouldn't happen with this logic, but good practice)
+                     document.querySelectorAll('.supportive-message').forEach(msg => msg.remove());
+                }
+
+                document.getElementById("passwordInput").value = "";
+            }
+        }
+
+        function showContent() {
+            gate.style.display = "none";
+            mainContent.style.display = "block";
+        }
+
+        // Check for auto-login
+        function checkAuth() {
+            const authData = localStorage.getItem("rioAuth");
+            if (authData) {
+                try {
+                    const parsedData = JSON.parse(authData);
+                    // Check if the auth is still valid (optional: you can add expiration logic here)
+                    if (parsedData.auth === "yes") {
+                        showContent();
+                        return;
+                    }
+                } catch (e) {
+                    console.error("Error parsing auth data");
+                }
+            }
+            // If no valid auth data, show the gate
+            gate.style.display = "flex";
+            mainContent.style.display = "none";
+        }
+
+        // Run auth check when page loads
+        checkAuth();
+
+        // Add enter key support
+        document.getElementById("passwordInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+
+    <!-- Script for hide/show password -->
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('passwordInput');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                // toggle the type attribute
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // toggle the eye icon
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"></script>
