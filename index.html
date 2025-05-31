@@ -2055,7 +2055,7 @@
         #togglePassword {
             position: absolute;
             right: 10px;
-            top: 50%;
+            top: 70000          5%; /* Moved 5% lower */
             transform: translateY(-50%);
             cursor: pointer;
             color: var(--pwc-grey-55);
@@ -2302,7 +2302,54 @@
 <body>
     <!-- Add the gate system -->
     <div id="gate">
-        <div style="text-align: center; max-width: 800px; padding: 0 2rem;">
+        <audio id="jumboAudio" src="assets/jumbo.mp3" preload="auto"></audio>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const audio = document.getElementById('jumboAudio');
+                const audioIcon = document.getElementById('audioIcon');
+                
+                function toggleAudio() {
+                    if (audio.paused) {
+                        audio.play().catch(error => {
+                            console.error('Error playing audio:', error);
+                        });
+                        audioIcon.classList.remove('fa-play');
+                        audioIcon.classList.add('fa-pause');
+                    } else {
+                        audio.pause();
+                        audioIcon.classList.remove('fa-pause');
+                        audioIcon.classList.add('fa-play');
+                    }
+                }
+
+                // Add event listeners to update icon when audio ends or is paused
+                audio.addEventListener('pause', function() {
+                    audioIcon.classList.remove('fa-pause');
+                    audioIcon.classList.add('fa-play');
+                });
+
+                audio.addEventListener('ended', function() {
+                    audioIcon.classList.remove('fa-pause');
+                    audioIcon.classList.add('fa-play');
+                });
+
+                // Add play event listener to update icon when audio starts playing
+                audio.addEventListener('play', function() {
+                    audioIcon.classList.remove('fa-play');
+                    audioIcon.classList.add('fa-pause');
+                });
+
+                // Make toggleAudio function globally available
+                window.toggleAudio = toggleAudio;
+            });
+        </script>
+        <div style="text-align: center; max-width: 800px; padding: 0 2rem; position: relative;">
+            <div style="position: absolute; right: -60px; bottom: 0px; z-index: 2;">
+                <button onclick="toggleAudio()" style="background: var(--pwc-orange); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+                    <i class="fas fa-play" id="audioIcon"></i>
+                </button>
+            </div>
+            <img src="https://redfoxgraphix.com/wp-content/uploads/2022/07/ClubEgo-David-icon2.gif" alt="Bottom Right Decoration" style="position: absolute; bottom: -100px; right: -60px; width: 200px; height: 200px; z-index: 1;">
             <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--pwc-grey-90); margin-bottom: 1.5rem; position: relative; padding-left: 20px;">
                 Welcome to Rio's Private Portfolio
                 <div style="position: absolute; left: 0; top: 15%; height: 70%; width: 6px; background: var(--pwc-orange); border-radius: 3px;"></div>
@@ -2567,7 +2614,42 @@
             'Is it something related to his university?',
             'Could it be a hobby?',
             'Perhaps a significant year?',
-            'Keep trying, you\'re almost there! (Maybe 😉)'
+            'Keep trying, you\'re almost there! (Maybe 😉)',
+            'Is it related to a fictional character?',
+            'Maybe his favorite color?',
+            'Could it be a random number?',
+            'Perhaps a reversed word?',
+            'Think about animals!',
+            'Is it a date?',
+            'What about a type of programming language?',
+            'Consider mythological creatures!',
+            'Could it be a celestial body?',
+            'Maybe his favorite song title?',
+            'Is it related to a historical event?',
+            'Think about types of food again, but more specific!',
+            'Could it be a type of weather phenomenon?',
+            'What about a famous scientist?',
+            'Is it a country or city name?',
+            'What about a type of sport?',
+            'Consider famous artists!',
+            'Is it a type of drink?',
+            'Think about a type of movie genre!',
+            'Could it be a type of art?',
+            'What about a famous athlete?',
+            'Is it a type of animal?',
+            'Think about a type of plant!',
+            'Could it be a type of technology?',
+            'What about a famous writer?',
+            'Is it a type of vehicle?',
+            'Think about a type of music genre!',
+            'Could it be a type of clothing?',
+            'What about a famous actor?',
+            'Is it a type of weapon?',
+            'Think about a type of food again, but more specific!',
+            'Could it be a type of drink?',
+            'What about a famous writer?',
+            
+
         ];
 
         const threshold = 10; // Number of attempts before supportive messages start
@@ -2597,7 +2679,13 @@
 
                 // Always display the initial wrong message in the #wrong div
                 const initialMessageIndex = (incorrectAttempts - 1) % initialWrongMessages.length;
-                wrong.innerHTML = initialWrongMessages[initialMessageIndex];
+                
+                // Use requestAnimationFrame to ensure the DOM update happens before the next repaint
+                requestAnimationFrame(() => {
+                     wrong.innerHTML = initialWrongMessages[initialMessageIndex];
+                     // Access a property that forces reflow to ensure immediate display update
+                     void wrong.offsetHeight; // Reading offsetHeight forces a reflow
+                });
                 
                 // Create and display supportive message in the floating container if threshold is reached
                 if (incorrectAttempts >= threshold) {
@@ -3384,4 +3472,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
