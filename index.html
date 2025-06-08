@@ -1,0 +1,3516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rio Anggara - Portfolio</title>
+    
+    <!-- Add noindex, nofollow meta tag -->
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Basic Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#d04a02">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #D04A02;
+            --secondary-color: #FFB600;
+            --accent-color: #DB536A;
+            --dark-color: #000000;
+            --text-color: #333;
+            --bg-light: #fff;
+            --spacing: 2rem;
+            --pwc-orange: #D04A02;
+            --pwc-yellow: #FFB600;
+            --pwc-rose: #DB536A;
+            --pwc-tangerine: #EB8C00;
+            --pwc-grey-15: #DEDEDE;
+            --pwc-grey-55: #7D7D7D;
+            --pwc-grey-90: #2D2D2D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body:not(a):not(.experience-card):not(input):not(textarea) {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 2rem 0;
+            position: relative;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'ITC Charter Black', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--pwc-grey-90);
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background: var(--pwc-orange);
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--pwc-grey-55);
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pwc-orange);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--pwc-grey-90);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 1.5rem 0;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            right: -5%;
+            top: -5%;
+            width: 200px;
+            height: 200px;
+            background: var(--pwc-yellow);
+            opacity: 0.1;
+            border-radius: 0 0 0 100%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            left: -2%;
+            bottom: -2%;
+            width: 150px;
+            height: 150px;
+            background: var(--pwc-rose);
+            opacity: 0.1;
+            border-radius: 0 100% 0 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--pwc-grey-90);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .hero-content h1::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 6px;
+            background: var(--pwc-orange);
+            border-radius: 3px;
+        }
+
+        .hero-content p {
+            color: var(--pwc-grey-55);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--pwc-orange);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            background-color: var(--pwc-tangerine);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.2);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            background: var(--pwc-orange);
+            opacity: 0.1;
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        /* Add these styles for the overlapping squares */
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background: 
+                linear-gradient(45deg, var(--pwc-orange) 25%, transparent 25%) -20px 0,
+                linear-gradient(-45deg, var(--pwc-yellow) 25%, transparent 25%) 0 -20px,
+                linear-gradient(45deg, var(--pwc-rose) 25%, transparent 25%) -40px -20px;
+            background-size: 40px 40px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background: 
+                linear-gradient(-45deg, var(--pwc-tangerine) 25%, transparent 25%) 0 0,
+                linear-gradient(45deg, var(--pwc-orange) 25%, transparent 25%) -20px -20px,
+                linear-gradient(-45deg, var(--pwc-yellow) 25%, transparent 25%) -40px 0;
+            background-size: 35px 35px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* Add additional decorative squares */
+        .hero-image .squares {
+            position: absolute;
+            top: 50%;
+            right: 80px;
+            width: 200px;
+            height: 200px;
+            z-index: -1;
+            transform: translateY(-50%);
+        }
+
+        /* Create multiple layered squares with different sizes */
+        .squares::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--pwc-orange);
+            opacity: 0.2;
+            top: 0;
+            left: 0;
+        }
+
+        .squares::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--pwc-yellow);
+            opacity: 0.2;
+            top: 15px;
+            left: 15px;
+        }
+
+        /* Add more squares with increasing sizes */
+        .squares .square-1 {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--pwc-rose);
+            opacity: 0.2;
+            top: 30px;
+            left: 30px;
+        }
+
+        .squares .square-2 {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--pwc-tangerine);
+            opacity: 0.2;
+            top: 45px;
+            left: 45px;
+        }
+
+        .squares .square-3 {
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            background: var(--pwc-orange);
+            opacity: 0.15;
+            top: 60px;
+            left: 60px;
+        }
+
+        .squares .square-4 {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: var(--pwc-yellow);
+            opacity: 0.15;
+            top: 75px;
+            left: 75px;
+        }
+
+        .squares .square-5 {
+            position: absolute;
+            width: 85px;
+            height: 85px;
+            background: var(--pwc-rose);
+            opacity: 0.1;
+            top: 90px;
+            left: 90px;
+        }
+
+        .squares .square-6 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--pwc-tangerine);
+            opacity: 0.1;
+            top: 105px;
+            left: 105px;
+        }
+
+        /* Areas of Work */
+        .areas {
+            padding: 1.5rem 0;
+            background-color: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .areas::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--pwc-orange) 48%, var(--pwc-orange) 52%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--pwc-yellow) 48%, var(--pwc-yellow) 52%, transparent 52%);
+            background-size: 100px 100px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .areas .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            color: var(--pwc-grey-90);
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--pwc-orange);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .experience-item {
+            min-height: 300px;
+            position: relative;
+            padding: 2rem;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            width: 40px;
+            height: 2px;
+            background: var(--pwc-orange);
+        }
+
+        .experience-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Education & Accolades */
+        .education-accolades {
+            padding: 1.5rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .education-item, .accolade-item {
+            margin-bottom: 3rem;
+        }
+
+        .education-item h3, .accolade-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 1.5rem 0;
+            background-color: #f9f9f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 47%, var(--pwc-rose) 47%, var(--pwc-rose) 53%, transparent 53%),
+                linear-gradient(0deg, transparent 47%, var(--pwc-orange) 47%, var(--pwc-orange) 53%, transparent 53%);
+            background-size: 60px 60px;
+            opacity: 0.04;
+            z-index: 1;
+        }
+
+        .experience .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .experience-item {
+            min-height: 300px;
+            position: relative;
+            padding: 2rem;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            width: 40px;
+            height: 2px;
+            background: var(--pwc-orange);
+        }
+
+        .experience-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero, .experience-grid, .education-accolades, .experience-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-item, .experience-item {
+                min-height: 250px;
+            }
+        }
+
+        /* Color block accents */
+        .experience-grid, .experience-grid {
+            position: relative;
+        }
+
+        .experience-grid::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            width: 100px;
+            height: 100px;
+            background: var(--pwc-yellow);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .experience-grid::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: -20px;
+            width: 120px;
+            height: 120px;
+            background: var(--pwc-rose);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Chat Section Styles */
+        .chat-section {
+            padding: 1rem 0; /* Reduced from 1.5rem */
+            background: white;
+            border-radius: 8px;
+            color: var(--pwc-grey-90);
+        }
+
+        .chat-title {
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 1rem; /* Reduced from 1.5rem */
+            color: var(--pwc-grey-90);
+        }
+
+        .chat-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Update chat-main-wrapper to use position relative */
+        .chat-main-wrapper {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1.5rem;
+            margin: 1rem 0; /* Reduced from 2rem */
+            position: relative; /* Add this */
+        }
+
+        /* Update chat-main styles to use position absolute */
+        .chat-main {
+            position: absolute; /* Add this */
+            right: 0; /* Add this */
+            width: calc(100% - 295px); /* Updated from 335px */
+            background: white;
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            border: 1px solid var(--pwc-grey-15);
+            transition: width 0.3s ease; /* Add transition for width only */
+        }
+
+        /* Add style for expanded chat when question box is minimized */
+        .quick-buttons.minimized + .chat-main {
+            width: calc(100% - 65px); /* 50px minimized width + 15px gap */
+        }
+
+        /* Update quick-buttons (left section) styles to match chat-main (right section) */
+        .quick-buttons {
+            background: white;
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            height: 600px;
+            border: 1px solid var(--pwc-grey-15);
+            transition: width 0.3s ease, min-width 0.3s ease;
+            position: relative;
+            min-width: 280px;
+            width: 280px;
+            overflow: visible; /* Changed from overflow-y: auto */
+        }
+
+        .quick-buttons.minimized {
+            min-width: 50px;
+            width: 50px;
+            background: transparent;
+            border: none;
+            box-shadow: none !important; /* Force remove shadow */
+            transform: none !important; /* Prevent any transformations */
+        }
+
+        /* Remove context header styles when minimized */
+        .quick-buttons.minimized .context-header {
+            background: transparent;
+            border: none;
+        }
+
+        /* Remove hover effects completely when minimized */
+        .quick-buttons.minimized:hover {
+            box-shadow: none !important;
+            transform: none !important;
+            border: none;
+        }
+
+        /* Keep minimize button visible but remove container visuals */
+        .quick-buttons.minimized .minimize-question-box {
+            right: 0;
+            border-radius: 4px;
+            width: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .quick-buttons.minimized .questions-container,
+        .quick-buttons.minimized .context-header span {
+            display: none;
+        }
+
+        /* Update context-header styles */
+        .context-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid var(--pwc-grey-15);
+            margin-bottom: 0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: white;
+            height: 72px;
+            position: relative;
+        }
+
+        /* Update minimize-question-box styles */
+        .minimize-question-box {
+            position: absolute;
+            right: -16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--pwc-orange);
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px 4px;
+            border-radius: 0 4px 4px 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 40px;
+            z-index: 1000;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+        }
+
+        /* Add specific styles for minimize button when box is minimized */
+        .quick-buttons.minimized .minimize-question-box {
+            right: 0; /* Adjust position */
+            border-radius: 4px; /* Make all corners rounded */
+            width: 20px; /* Slightly wider */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Adjust shadow */
+        }
+
+        /* Update hover effect */
+        .minimize-question-box:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Update icon rotation */
+        .minimize-question-box i {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem; /* Slightly smaller icon */
+        }
+
+        /* Update minimized state positioning */
+        .quick-buttons.minimized .minimize-question-box {
+            right: -12px; /* Keep the same position when minimized */
+        }
+
+        .quick-buttons.minimized .minimize-question-box i {
+            transform: rotate(180deg);
+        }
+
+        /* Update quick-btn styles to remove arrow and add a cleaner hover effect */
+        .quick-btn {
+            background: white;
+            border: 1px solid var(--pwc-grey-15);
+            padding: 0.85rem 1.2rem;
+            border-radius: 8px;
+            color: var(--pwc-grey-90);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Remove the ::before pseudo-element that was creating the arrow */
+        .quick-btn::before {
+            display: none;
+        }
+
+        /* Update hover effects */
+        .quick-btn:hover {
+            background: var(--pwc-orange);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.15);
+            padding-left: 1.5rem; /* Slightly increase left padding on hover */
+        }
+
+        /* Update question category badge positioning */
+        .question-category {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: var(--pwc-grey-15);
+            color: var(--pwc-grey-55);
+            margin-left: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Update chat header styles */
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid var(--pwc-grey-15);
+            height: 72px; /* Match question box header height */
+        }
+
+        /* Update chat messages container */
+        #chatMessages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            margin-bottom: 0;
+            word-break: break-word;
+        }
+
+        /* Update chat input container */
+        .chat-input-container {
+            padding: 1rem;
+            border-top: 1px solid var(--pwc-grey-15);
+            background: white; /* Ensure white background */
+            border-radius: 0 0 8px 8px; /* Round bottom corners */
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--pwc-grey-15);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        #sendButton {
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: var(--pwc-grey-55);
+            text-align: center;
+            margin-top: 0.25rem;
+        }
+
+        .message {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .bot-message, .user-message {
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            max-width: 80%;
+            background: #f5f5f5;
+        }
+
+        /* Style user messages */
+        .user-message {
+            margin-left: auto;
+            background: var(--pwc-orange);
+            color: white;
+        }
+
+        /* Style bot messages */
+        .bot-profile-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bot-profile-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .bot-message {
+            background: #f5f5f5;
+            color: var(--pwc-grey-90);
+        }
+
+        /* Fix image display in messages */
+        .bot-message img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+        }
+
+        /* Update chat container to prevent image overflow */
+        #chatMessages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+        }
+
+        /* Ensure proper message alignment */
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .quick-buttons::-webkit-scrollbar,
+        #chatMessages::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .quick-buttons::-webkit-scrollbar-track {
+            background: var(--pwc-grey-15);
+            border-radius: 2px;
+        }
+
+        .quick-buttons::-webkit-scrollbar-thumb {
+            background: var(--pwc-grey-55);
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+
+        .quick-buttons::-webkit-scrollbar-thumb:hover {
+            background: var(--pwc-orange);
+        }
+
+        /* Add hover effect for entire container */
+        .quick-buttons:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        /* Add these new styles for the send button */
+        #sendButton {
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #sendButton:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-2px);
+        }
+
+        #sendButton i {
+            font-size: 1.2rem;
+        }
+
+        /* Add smooth scroll behavior */
+        .chat-container {
+            scroll-behavior: smooth;
+        }
+
+        /* For short messages, make them fit content */
+        .message:empty,
+        .message:only-child {
+            width: fit-content;
+            min-width: 100px;
+        }
+
+        /* Animation for message appearance */
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            animation: messageAppear 0.3s ease-out;
+        }
+
+        @keyframes changePlaceholder {
+            0%, 20% { content: "Ask something here..."; }
+            20%, 40% { content: "What projects has Rio worked on?"; }
+            40%, 60% { content: "Tell me about Rio's achievements"; }
+            60%, 80% { content: "What is Rio's experience in product development?"; }
+            80%, 100% { content: "What competitions has Rio won?"; }
+        }
+
+        .input-group input::placeholder {
+            color: var(--pwc-grey-55);
+            opacity: 0;
+            animation: fadeInOut 20s infinite;
+        }
+
+        .input-group input {
+            position: relative;
+        }
+
+        .input-group input::before {
+            content: "Hi, what's your question?";
+            position: absolute;
+            color: var(--pwc-grey-55);
+            animation: changePlaceholder 20s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fadeInOut {
+            0%, 15% { opacity: 1; }
+            17%, 18% { opacity: 0; }
+            20%, 35% { opacity: 1; }
+            37%, 38% { opacity: 0; }
+            40%, 55% { opacity: 1; }
+            57%, 58% { opacity: 0; }
+            60%, 75% { opacity: 1; }
+            77%, 78% { opacity: 0; }
+            80%, 95% { opacity: 1; }
+            97%, 100% { opacity: 0; }
+        }
+
+        /* Explicitly set placeholder styles */
+        .input-group input::placeholder {
+            color: var(--pwc-grey-55) !important;
+            opacity: 1 !important;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* For Firefox */
+        .input-group input::-moz-placeholder {
+            color: var(--pwc-grey-55) !important;
+            opacity: 1 !important;
+        }
+
+        /* For Edge */
+        .input-group input:-ms-input-placeholder {
+            color: var(--pwc-grey-55) !important;
+            opacity: 1 !important;
+        }
+
+        /* For IE */
+        .input-group input::-ms-input-placeholder {
+            color: var(--pwc-grey-55) !important;
+            opacity: 1 !important;
+        }
+
+        /* Allow text selection in input fields */
+        input, textarea {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Update link styles in chat bubbles */
+        .bot-message a {
+            color: inherit;  /* Use the same color as the message text */
+            text-decoration: underline;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .bot-message a:hover {
+            opacity: 0.8;
+        }
+
+        .experience-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 2px solid transparent;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        .experience-card:hover {
+            border-color: var(--pwc-yellow);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .experience-card h3 {
+            font-family: 'ITC Charter Black', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--pwc-grey-90);
+        }
+
+        .experience-card .company {
+            color: var(--pwc-grey-55);
+            margin-bottom: 1rem;
+        }
+
+        .experience-card p {
+            color: var(--pwc-grey-55);
+            line-height: 1.6;
+        }
+
+        /* Allow text selection for other interactive elements */
+        a, input, textarea, .hover-link {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .work-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12),
+                        0 0 0 1px var(--pwc-yellow),
+                        0 0 20px rgba(255, 182, 0, 0.2);
+            border-color: var(--pwc-yellow);
+        }
+
+        .work-item h3 {
+            font-family: 'ITC Charter Black', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--pwc-grey-90);
+            line-height: 1.3;
+        }
+
+        .work-item p {
+            color: var(--pwc-grey-55);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Add these styles if not already present */
+        .hover-link {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .hover-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pwc-orange);
+            transition: width 0.3s ease;
+        }
+
+        .hover-link:hover::after {
+            width: 100%;
+        }
+
+        /* Allow text selection for links */
+        .hover-link {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        /* Add thinking status style */
+        .thinking-status {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        /* Add styles for the context header */
+        .context-header {
+            font-size: 0.9rem;
+            color: var(--pwc-grey-55);
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid var(--pwc-grey-15);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Update quick buttons container */
+        .quick-buttons {
+            background: white;
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            height: 600px;
+            border: 1px solid var(--pwc-grey-15);
+            transition: width 0.3s ease, min-width 0.3s ease;
+            position: relative;
+            min-width: 280px;
+            width: 280px;
+            overflow: visible; /* Changed from overflow-y: auto */
+        }
+
+        /* Add separate scroll container for questions */
+        .questions-container {
+            padding: 1rem;
+            height: calc(100% - 72px); /* Subtract header height */
+            overflow-y: auto;
+        }
+
+        .message-timestamp {
+            font-size: 0.7rem;
+            color: var(--pwc-grey-55);
+            margin-top: 4px;
+        }
+
+        .user-message .message-timestamp {
+            text-align: right;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid var(--pwc-grey-15);
+        }
+
+        .bot-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .bot-info h4 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .status {
+            font-size: 0.8rem;
+            color: #2ecc71;
+        }
+
+        .chat-actions button {
+            background: none;
+            border: none;
+            color: var(--pwc-grey-55);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .chat-actions button:hover {
+            color: var(--pwc-orange);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: var(--pwc-grey-55);
+            border-radius: 50%;
+            animation: typing 1s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Add message animations */
+        .message {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Optional: Adjust the container max-height for larger screens */
+        @media (min-height: 900px) {
+            .quick-buttons,
+            .chat-main {
+                height: 700px; /* Even taller for large screens */
+            }
+        }
+
+        /* Add these new styles for the floating chat */
+        .floating-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            width: 320px;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            border: 1px solid var(--pwc-grey-15);
+            transform-origin: bottom right;
+        }
+
+        .floating-chat.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .floating-chat.minimized {
+            width: auto; /* Adjust width to content */
+            padding-right: 8px; /* Add some padding for comfort */
+        }
+
+        .floating-chat-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--pwc-grey-15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .floating-chat.minimized .floating-chat-header {
+            padding: 8px 12px; /* Smaller padding when minimized */
+            border-bottom: none; /* Remove border when minimized */
+        }
+
+        .floating-chat-header img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .floating-chat.minimized .floating-chat-header img {
+            width: 28px; /* Slightly smaller image when minimized */
+            height: 28px;
+        }
+
+        .floating-chat-header-text {
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .floating-chat-header-text h4 {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--pwc-grey-90);
+            transition: all 0.3s ease;
+        }
+
+        .floating-chat-header-text p {
+            font-size: 0.75rem;
+            margin: 0;
+            color: var(--pwc-grey-55);
+            transition: all 0.3s ease;
+        }
+
+        .floating-chat.minimized .floating-chat-header-text p {
+            display: none; /* Hide subtitle when minimized */
+        }
+
+        .floating-chat.minimized .floating-chat-header-text h4 {
+            font-size: 0.85rem; /* Slightly smaller text when minimized */
+        }
+
+        .minimize-btn {
+            background: none;
+            border: none;
+            color: var(--pwc-grey-55);
+            cursor: pointer;
+            padding: 4px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .minimize-btn:hover {
+            color: var(--pwc-orange);
+        }
+
+        .minimize-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .minimized .minimize-btn i {
+            transform: rotate(180deg);
+        }
+
+        /* Hide input area when minimized */
+        .floating-chat.minimized .floating-chat-input {
+            display: none;
+        }
+
+        /* Add hover effect for minimized state */
+        .floating-chat.minimized:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(0,0,0,0.2);
+        }
+
+        /* Tooltip styles */
+        .chat-actions button {
+            position: relative;
+        }
+
+        .chat-actions button::before {
+            content: 'Clear chat';
+            position: absolute;
+            background: var(--pwc-orange);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(208, 74, 2, 0.2);
+        }
+
+        .chat-actions button::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--pwc-orange) transparent transparent transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .chat-actions button:hover::before,
+        .chat-actions button:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Add these animation keyframes */
+        @keyframes scatterMessage {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(var(--rotation));
+                opacity: 0;
+            }
+        }
+
+        /* Add class for animating messages */
+        .message.clearing {
+            animation: scatterMessage 0.5s ease-in forwards;
+        }
+
+        /* Floating chat input styles */
+        .floating-chat-input {
+            padding: 12px;
+            border-top: 1px solid var(--pwc-grey-15);
+            display: flex;
+            gap: 8px;
+        }
+
+        .floating-chat-input input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid var(--pwc-grey-15);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .floating-chat-input input:focus {
+            border-color: var(--pwc-orange);
+            box-shadow: 0 0 0 2px rgba(208, 74, 2, 0.1);
+        }
+
+        .floating-chat-input button {
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .floating-chat-input button:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-2px);
+        }
+
+        .minimize-btn {
+            background: none;
+            border: none;
+            color: var(--pwc-grey-55);
+            cursor: pointer;
+            padding: 4px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .minimize-btn:hover {
+            color: var(--pwc-orange);
+        }
+
+        .minimize-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .minimized .minimize-btn i {
+            transform: rotate(180deg);
+        }
+
+        /* Hide input area when minimized */
+        .floating-chat.minimized .floating-chat-input {
+            display: none;
+        }
+
+        /* Add hover effect for minimized state */
+        .floating-chat.minimized:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(0,0,0,0.2);
+        }
+
+        /* Hidden state */
+        .floating-chat.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        /* Add these keyframes for the glow effect */
+        @keyframes glowPwC {
+            0% {
+                box-shadow: 0 0 5px rgba(208, 74, 2, 0.2),
+                            0 0 10px rgba(208, 74, 2, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 10px rgba(208, 74, 2, 0.3),
+                            0 0 20px rgba(208, 74, 2, 0.2),
+                            0 0 30px rgba(208, 74, 2, 0.1);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(208, 74, 2, 0.2),
+                            0 0 10px rgba(208, 74, 2, 0.1);
+            }
+        }
+
+        /* Update input styles for both main chat and floating chat */
+        .input-group input,
+        .floating-chat-input input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--pwc-grey-15);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+        }
+
+        /* Enhanced focus states with glow */
+        .input-group input:focus,
+        .floating-chat-input input:focus {
+            outline: none;
+            border-color: var(--pwc-orange);
+            animation: glowPwC 2s infinite;
+            background: white;
+        }
+
+        /* Add subtle glow on hover */
+        .input-group input:hover,
+        .floating-chat-input input:hover {
+            border-color: var(--pwc-tangerine);
+            box-shadow: 0 0 10px rgba(208, 74, 2, 0.1);
+        }
+
+        /* Make placeholder text fade in/out smoothly */
+        .input-group input::placeholder,
+        .floating-chat-input input::placeholder {
+            color: var(--pwc-grey-55);
+            transition: opacity 0.3s ease;
+        }
+
+        .input-group input:focus::placeholder,
+        .floating-chat-input input:focus::placeholder {
+            opacity: 0.5;
+        }
+
+        /* Add subtle inner shadow for depth */
+        .input-group input,
+        .floating-chat-input input {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Remove inner shadow on focus */
+        .input-group input:focus,
+        .floating-chat-input input:focus {
+            box-shadow: none;
+        }
+
+        /* Add transition for the send button */
+        #sendButton,
+        .floating-chat-input button {
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(208, 74, 2, 0.2);
+        }
+
+        #sendButton:hover,
+        .floating-chat-input button:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.3);
+        }
+
+        #sendButton:active,
+        .floating-chat-input button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(208, 74, 2, 0.2);
+        }
+
+        /* Add rotating glow keyframes */
+        @keyframes rotatingGlow {
+            0% {
+                box-shadow: 3px 0 15px rgba(208, 74, 2, 0.4),
+                            -3px 0 15px rgba(255, 182, 0, 0.4);
+            }
+            25% {
+                box-shadow: 0 3px 15px rgba(208, 74, 2, 0.4),
+                            0 -3px 15px rgba(255, 182, 0, 0.4);
+            }
+            50% {
+                box-shadow: -3px 0 15px rgba(208, 74, 2, 0.4),
+                            3px 0 15px rgba(255, 182, 0, 0.4);
+            }
+            75% {
+                box-shadow: 0 -3px 15px rgba(208, 74, 2, 0.4),
+                            0 3px 15px rgba(255, 182, 0, 0.4);
+            }
+            100% {
+                box-shadow: 3px 0 15px rgba(208, 74, 2, 0.4),
+                            -3px 0 15px rgba(255, 182, 0, 0.4);
+            }
+        }
+
+        /* Update input styles */
+        .input-group input,
+        .floating-chat-input input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--pwc-grey-15);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+        }
+
+        /* Enhanced focus states with rotating glow */
+        .input-group input:focus,
+        .floating-chat-input input:focus {
+            outline: none;
+            border-color: var(--pwc-orange);
+            animation: rotatingGlow 4s linear infinite;
+            background: white;
+        }
+
+        /* Add subtle glow on hover */
+        .input-group input:hover,
+        .floating-chat-input input:hover {
+            border-color: var(--pwc-tangerine);
+            box-shadow: 0 0 15px rgba(255, 182, 0, 0.2);
+        }
+
+        /* Make placeholder text fade in/out smoothly */
+        .input-group input::placeholder,
+        .floating-chat-input input::placeholder {
+            color: var(--pwc-grey-55);
+            transition: opacity 0.3s ease;
+        }
+
+        .input-group input:focus::placeholder,
+        .floating-chat-input input:focus::placeholder {
+            opacity: 0.5;
+        }
+
+        /* Add subtle inner shadow for depth */
+        .input-group input,
+        .floating-chat-input input {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Remove inner shadow on focus */
+        .input-group input:focus,
+        .floating-chat-input input:focus {
+            box-shadow: none;
+        }
+
+        /* Add transition for the send button */
+        #sendButton,
+        .floating-chat-input button {
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(208, 74, 2, 0.2);
+        }
+
+        #sendButton:hover,
+        .floating-chat-input button:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.3);
+        }
+
+        #sendButton:active,
+        .floating-chat-input button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(208, 74, 2, 0.2);
+        }
+
+        /* Add these new styles for the gate system */
+        #gate {
+            position: absolute; /* Change from fixed to absolute */
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh; /* Change from height: 100% to min-height: 100vh */
+            background: white; /* Revert to white background */
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            text-align: center;
+            overflow: hidden; /* Hide overflowing pseudo-elements */
+        }
+
+        /* Add geometric background shapes */
+        #gate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--pwc-orange) 48%, var(--pwc-orange) 52%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--pwc-yellow) 48%, var(--pwc-yellow) 52%, transparent 52%);
+            background-size: 100px 100px;
+            opacity: 0.05; /* Subtle opacity */
+            z-index: 1; /* Behind the content */
+        }
+
+        #gate::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                 linear-gradient(90deg, transparent 47%, var(--pwc-rose) 47%, var(--pwc-rose) 53%, transparent 53%),
+                 linear-gradient(0deg, transparent 47%, var(--pwc-tangerine) 47%, var(--pwc-tangerine) 53%, transparent 53%);
+            background-size: 80px 80px;
+            opacity: 0.04; /* Subtle opacity */
+            z-index: 1; /* Behind the content */
+        }
+
+        #gate > div {
+            position: relative; /* Position content above pseudo-elements */
+            z-index: 2;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        #gate a {
+            position: relative;
+        }
+
+        #gate a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pwc-orange);
+            transition: width 0.3s ease;
+        }
+
+        #gate a:hover::after {
+            width: 100%;
+        }
+
+        .gate-input-container {
+            margin-bottom: 1rem;
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            border: 1px solid var(--pwc-grey-15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto; /* Center the block element */
+        }
+
+        .gate-input-container > div {
+             display: flex;
+             width: 100%;
+             gap: 1rem;
+             align-items: center;
+             justify-content: center; /* Center contents horizontally */
+        }
+
+        .gate-input-container input {
+            flex: 1;
+            padding: 0.85rem 1.2rem;
+            border: 2px solid var(--pwc-grey-15);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            padding-right: 40px;
+            min-width: 0; /* Allow flex item to shrink below content size */
+        }
+
+        .gate-input-container input:focus {
+            outline: none;
+            border-color: var(--pwc-orange);
+            box-shadow: 0 0 0 3px rgba(208, 74, 2, 0.1);
+        }
+
+        .gate-button {
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            min-width: 120px;
+        }
+
+        .gate-button:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.2);
+        }
+
+        #wrong {
+            color: var(--pwc-rose);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Style for link within wrong password message */
+        #wrong a {
+            color: var(--pwc-orange); /* Match link color */
+            text-decoration: none; /* Remove default underline */
+            position: relative;
+            font-weight: 500;
+        }
+
+        #wrong a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pwc-orange);
+            transition: width 0.3s ease;
+        }
+
+        #wrong a:hover::after {
+            width: 100%;
+        }
+
+        /* Style for the toggle password icon */
+        #togglePassword {
+            position: absolute;
+            right: 10px;
+            top: 70000          5%; /* Moved 5% lower */
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--pwc-grey-55);
+            transition: color 0.3s ease;
+        }
+
+        #togglePassword:hover {
+            color: var(--pwc-orange);
+        }
+
+        /* Add decorative elements - Keep the existing ones as they complement the new background */
+        #gate::before {
+            content: '';
+            position: absolute;
+            right: -5%;
+            top: -5%;
+            width: 200px;
+            height: 200px;
+            background: var(--pwc-yellow);
+            opacity: 0.1;
+            border-radius: 0 0 0 100%;
+        }
+
+        #gate::after {
+            content: '';
+            position: absolute;
+            left: -2%;
+            bottom: -2%;
+            width: 150px;
+            height: 150px;
+            background: var(--pwc-rose);
+            opacity: 0.1;
+            border-radius: 0 100% 0 0;
+        }
+
+        /* Add animation for the gate */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #gate {
+                padding: 1rem; /* Adjust padding for smaller screens */
+            }
+
+            #gate h2 {
+                font-size: 2rem; /* Slightly smaller title on mobile */
+                padding-left: 15px; /* Adjust padding for the accent bar */
+            }
+
+            #gate h2 div {
+                 top: 18%; /* Adjust accent bar position */
+                 height: 65%;
+            }
+
+            #gate p {
+                font-size: 1rem; /* Slightly smaller text on mobile */
+                line-height: 1.6; /* Adjust line height */
+            }
+
+            .gate-input-container {
+                padding: 1rem; /* Adjust padding inside the container */
+            }
+
+            .gate-input-container > div {
+                flex-direction: column; /* Stack input and button vertically */
+                gap: 0.75rem; /* Adjust gap when stacked */
+                align-items: stretch; /* Stretch items to fill width */
+            }
+
+            .gate-input-container input {
+                 padding: 0.75rem 1rem; /* Adjust input padding */
+                 padding-right: 35px; /* Adjust padding for the eye icon */
+            }
+
+            #togglePassword {
+                right: 8px; /* Adjust eye icon position */
+            }
+
+            .gate-button {
+                width: 100%; /* Make button full width when stacked */
+                min-width: auto; /* Remove min-width constraint */
+                padding: 0.75rem 1rem; /* Adjust button padding */
+            }
+
+            #wrong {
+                font-size: 0.85rem; /* Slightly smaller error text */
+            }
+
+            /* Adjust decorative elements for smaller screens if needed */
+            #gate::before {
+                width: 150px;
+                height: 150px;
+                right: -10%;
+                top: -10%;
+            }
+
+            #gate::after {
+                width: 100px;
+                height: 100px;
+                left: -5%;
+                bottom: -5%;
+            }
+        }
+
+        /* You already have a media query for very small screens, let's keep it and refine */
+        @media (max-width: 480px) {
+            #gate h2 {
+                font-size: 1.8rem;
+            }
+
+            #gate p {
+                font-size: 0.95rem;
+            }
+
+            .gate-input-container {
+                 padding: 0.75rem;
+            }
+
+            .gate-input-container > div {
+                gap: 0.5rem;
+            }
+
+            .gate-input-container input {
+                padding: 0.6rem 0.8rem;
+                padding-right: 30px;
+            }
+
+            #togglePassword {
+                right: 6px;
+                font-size: 0.9rem;
+            }
+
+             .gate-button {
+                padding: 0.6rem 0.8rem;
+            }
+
+            /* Further adjust decorative elements for very small screens */
+            #gate::before {
+                width: 100px;
+                height: 100px;
+            }
+
+            #gate::after {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        #main-content {
+            display: none;
+        }
+
+        /* Styles for the floating supportive message */
+        #supportiveMessage {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--pwc-yellow); /* Use one of your brand colors */
+            color: var(--pwc-grey-90);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 9999; /* High z-index to be on top */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        #supportiveMessage.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+            #supportiveMessage {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Styles for the floating supportive message container */
+        #supportiveMessagesContainer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999; /* High z-index */
+            display: flex;
+            flex-direction: column-reverse; /* Stack items from bottom up */
+            align-items: flex-end; /* Align items to the right */
+            gap: 10px; /* Space between stacked messages */
+            pointer-events: none; /* Allow clicks to pass through the container */
+        }
+
+        /* Styles for individual floating supportive messages */
+        .supportive-message {
+            background: var(--pwc-yellow); /* Use one of your brand colors */
+            color: var(--pwc-grey-90);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            max-width: 250px; /* Limit width */
+            word-wrap: break-word; /* Prevent overflow */
+            pointer-events: auto; /* Allow clicks on the message itself if needed (though not interactive here) */
+        }
+
+        .supportive-message.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+             #supportiveMessagesContainer {
+                bottom: 10px;
+                right: 10px;
+                gap: 5px;
+            }
+            .supportive-message {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                 max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Add the gate system -->
+    <div id="gate">
+        <audio id="jumboAudio" src="assets/jumbo.mp3" preload="auto"></audio>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const audio = document.getElementById('jumboAudio');
+                const audioIcon = document.getElementById('audioIcon');
+                
+                function toggleAudio() {
+                    if (audio.paused) {
+                        audio.play().catch(error => {
+                            console.error('Error playing audio:', error);
+                        });
+                        audioIcon.classList.remove('fa-play');
+                        audioIcon.classList.add('fa-pause');
+                    } else {
+                        audio.pause();
+                        audioIcon.classList.remove('fa-pause');
+                        audioIcon.classList.add('fa-play');
+                    }
+                }
+
+                // Add event listeners to update icon when audio ends or is paused
+                audio.addEventListener('pause', function() {
+                    audioIcon.classList.remove('fa-pause');
+                    audioIcon.classList.add('fa-play');
+                });
+
+                audio.addEventListener('ended', function() {
+                    audioIcon.classList.remove('fa-pause');
+                    audioIcon.classList.add('fa-play');
+                });
+
+                // Add play event listener to update icon when audio starts playing
+                audio.addEventListener('play', function() {
+                    audioIcon.classList.remove('fa-play');
+                    audioIcon.classList.add('fa-pause');
+                });
+
+                // Make toggleAudio function globally available
+                window.toggleAudio = toggleAudio;
+            });
+        </script>
+        <div style="text-align: center; max-width: 800px; padding: 0 2rem; position: relative;">
+            <div style="position: absolute; right: -14px; bottom: 420px; z-index: 2;">
+                <button onclick="toggleAudio()" style="background: var(--pwc-orange); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+                    <i class="fas fa-play" id="audioIcon"></i>
+                </button>
+            </div>
+            <img src="https://redfoxgraphix.com/wp-content/uploads/2022/07/ClubEgo-David-icon2.gif" alt="Bottom Right Decoration" style="position: absolute; bottom: 350px; right: -130px; width: 200px; height: 200px; z-index: 1;">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--pwc-grey-90); margin-bottom: 1.5rem; position: relative; padding-left: 20px;">
+                Welcome to Rio's Private Portfolio
+                <div style="position: absolute; left: 0; top: 15%; height: 70%; width: 6px; background: var(--pwc-orange); border-radius: 3px;"></div>
+            </h2>
+            <p style="color: var(--pwc-grey-55); margin-bottom: 2rem; line-height: 1.8; font-family: 'Inter', sans-serif; font-size: 1.1rem;">
+                Hi and thank you for stopping by! This page is specially made for <strong>HR professionals and selected guests</strong>. If you're here after <strong>receiving my CV</strong>, you'll find the <strong>password included there</strong> to <strong>unlock the full content</strong>.
+                <br><br>
+                If you're not an HR professional or didn't receive an invitation but are still interested in my work, I'd love to connect — feel free to reach out via <a href="https://www.linkedin.com/in/rionggara/" target="_blank" style="color: var(--pwc-orange); text-decoration: none; font-weight: 500; position: relative;">LinkedIn</a> anytime.
+                <br><br>
+                Thanks again for your interest 🙌
+            </p>
+            <div class="gate-input-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); border: 1px solid var(--pwc-grey-15); display: flex; flex-direction: column; align-items: center; margin: 0 auto; max-width: 400px; width: 100%;">
+                <div style="display: flex; width: 100%; gap: 1rem; align-items: center; justify-content: center;">
+                    <div style="position: relative; flex: 1; min-width: 0;">
+                        <input type="password" id="passwordInput" placeholder="Enter password" style="font-family: 'Inter', sans-serif; font-size: 1rem; width: 100%; padding-right: 40px;">
+                        <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--pwc-grey-55);">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <button class="gate-button" onclick="checkPassword()" style="font-family: 'Inter', sans-serif; font-weight: 500;">Enter</button>
+                </div>
+            </div>
+            <p id="wrong" style="font-family: 'Inter', sans-serif; margin-top: 1rem;"></p>
+        </div>
+    </div>
+
+    <!-- Container for floating supportive messages -->
+    <div id="supportiveMessagesContainer"></div>
+
+    <div id="main-content">
+        <header>
+            <div class="container nav">
+                <div class="logo">RIO ANGGARA</div>
+                <div class="nav-links">
+                    <a href="about-me.html">My Journey</a>
+                    <a href="past-works.html">Portfolio</a>
+                    <a href="contact.html">Let's Connect</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero container">
+            <div class="hero-content">
+                <h1>Rio Anggara</h1>
+                <p>I am an International Business student at Universitas Padjadjaran with a focus on product development and business strategy. I combine academic excellence with practical experience in investment, banking, and technology sectors.</p>
+                <p>Based in Jakarta, Indonesia, I'm passionate about creating innovative solutions and driving business growth through strategic thinking and technology.</p>
+                <a href="#chat-section" class="btn">Get in touch & Ask Rio Anything</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/foto-akmal.jpeg" alt="Rio Anggara" />
+                <div class="squares">
+                    <div class="square-1"></div>
+                    <div class="square-2"></div>
+                    <div class="square-3"></div>
+                    <div class="square-4"></div>
+                    <div class="square-5"></div>
+                    <div class="square-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="areas">
+            <div class="container">
+                <h2 class="section-title">Field of Interest</h2>
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <h3>Product Development</h3>
+                        <p>I develop and implement strategic solutions in investment and technology, specializing in digital banking products and browser extensions. Currently leading Learnitab, an EdTech platform helping students in career preparation.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Business Strategy</h3>
+                        <p>I lead initiatives in business development and strategic planning, with proven success in international business competitions and consulting projects. Notable achievements include winning ISMC 2024 and Wall Street Business Challenge.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="education-accolades container">
+            <div class="education">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <h3><a href="https://www.unpad.ac.id/" class="hover-link">Universitas Padjadjaran</a></h3>
+                    <p class="subtitle">BSc in International Business (2020-2025)</p>
+                    <p>GPA: 3.72/4.00</p>
+                </div>
+                <div class="education-item">
+                    <h3><a href="https://www.ajou.ac.kr/en/index.do" class="hover-link">Ajou University</a></h3>
+                    <p class="subtitle">Exchange Program (2024)</p>
+                    <p>GPA: 81.7/100</p>
+                </div>
+            </div>
+            <div class="accolades">
+                <h2 class="section-title">Recent Achievements</h2>
+                <div class="accolade-item">
+                    <h3><a href="https://yli.or.id" class="hover-link">Young Leaders for Indonesia</a></h3>
+                    <p>McKinsey & Company Leadership Program</p>
+                </div>
+                <div class="accolade-item">
+                    <h3><a href="https://cleanrecyclinginitiative.com/competition/" class="hover-link">International Competition Winner</a></h3>
+                    <p>ISMC 2024 & Wall Street Business Challenge</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience">
+            <div class="container">
+                <h2 class="section-title">Key Experiences</h2>
+                <div class="work-grid">
+                    <div class="work-item" onclick="window.location.href='https://learnitab.com'">
+                        <h3>Founder & Product Owner</h3>
+                        <p>Learnitab | Jun 2024 - Present</p>
+                        <p class="key-points">Leading development of an EdTech browser extension platform, achieving 150+ downloads and 270% growth in user engagement.</p>
+                    </div>
+
+                    <div class="work-item" onclick="window.location.href='https://jago.com'">
+                        <h3>Product Intern</h3>
+                        <p>Bank Jago | Aug 2024 - Feb 2024</p>
+                        <p class="key-points">Driving product strategy and development across key banking functions, with focus on digital transformation and customer experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chat-section" class="chat-section container">
+            <h2 class="chat-title">Chat with Rio Anggara AI to know more!</h2>
+            <div class="chat-container">
+                <div class="chat-main-wrapper">
+                    <div class="quick-buttons">
+                        <div class="context-header">
+                            <span>Question Box</span>
+                            <button class="minimize-question-box">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </div>
+                        <div class="questions-container">
+                            <button class="quick-btn" onclick="askQuestion('Who is Rio Anggara?')">
+                                Who is Rio Anggara?
+                                <span class="question-category">Profile</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What are Rio\'s technical skills?')">
+                                What are Rio's technical skills?
+                                <span class="question-category">Skills</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What projects has Rio worked on?')">
+                                What projects has Rio worked on?
+                                <span class="question-category">Projects</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What is Rio\'s educational background?')">
+                                What is Rio's education?
+                                <span class="question-category">Education</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('How can I contact Rio?')">
+                                How can I contact Rio?
+                                <span class="question-category">Contact</span>
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What is Rio\'s work experience?')">
+                                What is Rio's work experience?
+                                <span class="question-category">Experience</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-main">
+                        <div class="chat-header">
+                            <div class="bot-profile">
+                                <img src="assets/foto-akmal.jpeg" alt="Rio AI" class="bot-avatar">
+                                <div class="bot-info">
+                                    <h4>Rio AI Assistant</h4>
+                                    <span class="status">Online</span>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="clear-chat" onclick="clearChat()">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="chatMessages"></div>
+                        <div class="chat-input-container">
+                            <div class="input-group">
+                                <input type="text" id="userInput" placeholder="Ask something here...">
+                                <button id="sendButton" onclick="sendMessage()">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <p class="disclaimer">Note: AI responses may not always be accurate... that's why you should interview the real Rio instead! 😉</p>
+                            <div class="typing-indicator" style="display: none;">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>Connect with me</p>
+                <div class="social-links">
+                    <a href="contact.html"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/rionggara"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://bit.ly/PortofolioRio-2025"><i class="fas fa-folder"></i></a>
+                </div>
+            </div>
+        </footer>
+
+        <div class="floating-chat">
+            <div class="floating-chat-header">
+                <img src="assets/foto-akmal.jpeg" alt="Rio AI">
+                <div class="floating-chat-header-text">
+                    <h4>Chat with Rio AI</h4>
+                    <p>Ask me anything!</p>
+                </div>
+                <button class="minimize-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="floating-chat-input">
+                <input type="text" placeholder="Type your question..." id="floatingInput">
+                <button onclick="handleFloatingChat()">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add the gate system script -->
+    <script>
+        const correctPassword = "riora354"; // Change this to your desired password
+        const gate = document.getElementById("gate");
+        const mainContent = document.getElementById("main-content");
+        const wrong = document.getElementById("wrong");
+        const supportiveMessagesContainer = document.getElementById("supportiveMessagesContainer"); // Get the new container div
+
+        // Get or initialize incorrect password attempt count from localStorage
+        let incorrectAttempts = parseInt(localStorage.getItem('rioIncorrectAttempts') || '0');
+
+        // Array of alternative messages for initial attempts (before 10)
+        const initialWrongMessages = [
+            'Wrong Password, curious enough? <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio personally</a>',
+            'Oops, wrong password. Still curious? Maybe just <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio</a>?',
+            'Hmm, that password didn\'t work either. Don\'t give up! Or... you could just <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio personally</a>.',
+            `That's ${incorrectAttempts} incorrect attempts! Feeling lucky, or ready to <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio</a>?`,
+            `You've tried the password ${incorrectAttempts} times now, seriously still not <a href="https://www.linkedin.com/in/rionggara/" target="_blank">asking Rio personally</a>?`,
+            'Password incorrect again! This is getting tough.. Why not save yourself the trouble and <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio on LinkedIn</a>?',
+            `Attempt number ${incorrectAttempts} failed. Don't let the password win! <a href="https://www.linkedin.com/in/rionggara/" target="_blank">Rio's LinkedIn</a> is just a click away.`, 
+            'Still locked out? This password game is tricky! A quick message to <a href="https://www.linkedin.com/in/rionggara/" target="_blank">Rio</a> might be easier.',
+            'Incorrect password. Perhaps fate is telling you to bypass the gate and <a href="https://www.linkedin.com/in/rionggara/" target="_blank">reach out directly</a>? 😉',
+            'Another wrong one! Maybe the password likes to play hard to get. Rio is much easier to find on <a href="https://www.linkedin.com/in/rionggara/" target="_blank">LinkedIn</a>!',
+            `Still can't crack it after ${incorrectAttempts} tries? Maybe it's a sign to <a href="https://www.linkedin.com/in/rionggara/" target="_blank">message Rio directly</a>!`,
+            'Still here? Impressive persistence! But the fastest way in might be to <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio directly</a>?'
+        ];
+
+        // Array of supportive/teasing messages after 10 attempts
+        const supportiveMessages = [
+            'Take a guess!',
+            'Maybe his favorite food?',
+            'Maybe his mother\'s name?',
+            'Maybe his first company?',
+            'Maybe his cat\'s name?',
+            'Try thinking outside the box!',
+            'Is it something related to his university?',
+            'Could it be a hobby?',
+            'Perhaps a significant year?',
+            'Keep trying, you\'re almost there! (Maybe 😉)',
+            'Is it related to a fictional character?',
+            'Maybe his favorite color?',
+            'Could it be a random number?',
+            'Perhaps a reversed word?',
+            'Think about animals!',
+            'Is it a date?',
+            'What about a type of programming language?',
+            'Consider mythological creatures!',
+            'Could it be a celestial body?',
+            'Maybe his favorite song title?',
+            'Is it related to a historical event?',
+            'Think about types of food again, but more specific!',
+            'Could it be a type of weather phenomenon?',
+            'What about a famous scientist?',
+            'Is it a country or city name?',
+            'What about a type of sport?',
+            'Consider famous artists!',
+            'Is it a type of drink?',
+            'Think about a type of movie genre!',
+            'Could it be a type of art?',
+            'What about a famous athlete?',
+            'Is it a type of animal?',
+            'Think about a type of plant!',
+            'Could it be a type of technology?',
+            'What about a famous writer?',
+            'Is it a type of vehicle?',
+            'Think about a type of music genre!',
+            'Could it be a type of clothing?',
+            'What about a famous actor?',
+            'Is it a type of weapon?',
+            'Think about a type of food again, but more specific!',
+            'Could it be a type of drink?',
+            'What about a famous writer?',
+            
+
+        ];
+
+        const threshold = 10; // Number of attempts before supportive messages start
+        const supportiveMessageDuration = 3000; // Duration supportive message is visible (in milliseconds)
+        const fadeDuration = 300; // CSS transition duration for fade/slide
+
+        // Add function to track password attempts
+        async function trackPasswordAttempt(attempt, success) {
+            try {
+                const timestamp = new Date().toISOString();
+                const data = `${timestamp} | Attempt: ${attempt} | Success: ${success}\n`;
+                
+                // Send the attempt data to the server
+                await fetch('/.netlify/functions/track-attempt', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        timestamp,
+                        attempt,
+                        success
+                    })
+                });
+            } catch (error) {
+                console.error('Error tracking attempt:', error);
+            }
+        }
+
+        // Update the checkPassword function
+        async function checkPassword() {
+            const input = document.getElementById("passwordInput").value;
+            
+            try {
+                const response = await fetch('/verify-password', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ password: input })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Clear attempts on successful login
+                    localStorage.removeItem('rioIncorrectAttempts');
+
+                    // Hide any visible wrong messages and remove all supportive messages
+                    wrong.innerHTML = '';
+                    document.querySelectorAll('.supportive-message').forEach(msg => msg.remove());
+
+                    const authData = {
+                        timestamp: new Date().getTime(),
+                        auth: "yes"
+                    };
+                    localStorage.setItem("rioAuth", JSON.stringify(authData));
+                    showContent();
+                } else {
+                    // Increment and save attempts
+                    incorrectAttempts++;
+                    localStorage.setItem('rioIncorrectAttempts', incorrectAttempts);
+
+                    // Always display the initial wrong message in the #wrong div
+                    const initialMessageIndex = (incorrectAttempts - 1) % initialWrongMessages.length;
+                    
+                    // Use requestAnimationFrame to ensure the DOM update happens before the next repaint
+                    requestAnimationFrame(() => {
+                         wrong.innerHTML = initialWrongMessages[initialMessageIndex];
+                         // Access a property that forces reflow to ensure immediate display update
+                         void wrong.offsetHeight; // Reading offsetHeight forces a reflow
+                    });
+                    
+                    // Create and display supportive message in the floating container if threshold is reached
+                    if (incorrectAttempts >= threshold) {
+                        const supportiveMessageIndex = (incorrectAttempts - threshold) % supportiveMessages.length;
+                        const messageText = `Attempt #${incorrectAttempts}: ${supportiveMessages[supportiveMessageIndex]}`;
+
+                        const floatingMessage = document.createElement('div');
+                        floatingMessage.classList.add('supportive-message'); // Add a class for styling
+                        floatingMessage.textContent = messageText;
+                        
+                        // Append the new message to the container
+                        supportiveMessagesContainer.appendChild(floatingMessage);
+
+                        // Trigger fade-in animation (needs a small delay to work)
+                        setTimeout(() => { floatingMessage.classList.add('show'); }, 10);
+
+                        // Set timer to remove the message after duration
+                        setTimeout(() => {
+                            floatingMessage.classList.remove('show'); // Trigger fade-out
+                            // Remove element from DOM after fade-out transition ends
+                            setTimeout(() => { floatingMessage.remove(); }, fadeDuration);
+                        }, supportiveMessageDuration);
+
+                    } else {
+                        // Ensure any existing supportive messages are removed if attempts drop below threshold (shouldn't happen with this logic, but good practice)
+                         document.querySelectorAll('.supportive-message').forEach(msg => msg.remove());
+                    }
+
+                    document.getElementById("passwordInput").value = "";
+                }
+            } catch (error) {
+                console.error('Error checking password:', error);
+                wrong.innerHTML = 'An error occurred while checking the password. Please try again.';
+                document.getElementById("passwordInput").value = "";
+            }
+        }
+
+        function showContent() {
+            gate.style.display = "none";
+            mainContent.style.display = "block";
+        }
+
+        // Check for auto-login
+        function checkAuth() {
+            const authData = localStorage.getItem("rioAuth");
+            if (authData) {
+                try {
+                    const parsedData = JSON.parse(authData);
+                    // Check if the auth is still valid (optional: you can add expiration logic here)
+                    if (parsedData.auth === "yes") {
+                        showContent();
+                        return;
+                    }
+                } catch (e) {
+                    console.error("Error parsing auth data");
+                }
+            }
+            // If no valid auth data, show the gate
+            gate.style.display = "flex";
+            mainContent.style.display = "none";
+        }
+
+        // Run auth check when page loads
+        checkAuth();
+
+        // Add enter key support
+        document.getElementById("passwordInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+
+    <!-- Script for hide/show password -->
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('passwordInput');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                // toggle the type attribute
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // toggle the eye icon
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"></script>
+
+    <script type="module">
+        import { RIO_SYSTEM_CONTENT } from './rio-content.js';
+        
+        const API_ENDPOINT = '/.netlify/functions/chat';  // Netlify Functions endpoint
+
+        async function query(userMessage) {
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        message: userMessage
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                return result.message;
+            } catch (error) {
+                console.error("API Error:", error);
+                throw error;
+            }
+        }
+
+        window.askQuestion = async function(question) {
+            if (isThinking) return;
+            
+            const input = document.getElementById('userInput');
+            input.value = question;
+            sendMessage();
+        };
+
+        window.generateAIResponse = query;
+    </script>
+
+    <script>
+        // Add this at the top with other global variables
+        let messageHistory = [];
+        let isThinking = false;
+        let firstMessageSent = false; // Add this flag at the top with other variables
+
+        // Update the formatMessageWithLinks function
+        function formatMessageWithLinks(message) {
+            // First handle bold text marked with asterisks
+            message = message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Handle numbered points that start with ": " and end with "."
+            message = message.replace(/:\s*(\d+)\./g, '<br><strong>$1.</strong>');
+            
+            // Handle numbered points that start with ". " and end with "."
+            message = message.replace(/\.\s*(\d+)\./g, '<br><strong>$1.</strong>');
+            
+            // Then handle the dashes by converting them to line breaks
+            message = message.replace(/\s-\s/g, '<br>- ');
+            
+            // Enhanced URL regex pattern to better catch .com domains
+            const urlRegex = /(https?:\/\/[^\s]+)|(\b(?:www\.|[a-zA-Z0-9-]+\.)?[a-zA-Z0-9-]+\.com(?:\/[^\s]*)?)\b|(bit\.ly\/[^\s]+)/g;
+            message = message.replace(urlRegex, function(url) {
+                // Add https:// if it's missing
+                const href = url.startsWith('http') ? url : 'https://' + url;
+                return `<a href="${href}" target="_blank">${url}</a>`;
+            });
+
+            // Auto-detect email addresses and make text before @ bold
+            const emailRegex = /([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
+            message = message.replace(emailRegex, function(match, username, domain) {
+                return `<a href="mailto:${match}"><strong>${username}</strong>@${domain}</a>`;
+            });
+
+            return message;
+        }
+
+        function addMessage(text, sender) {
+            const messages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            
+            if (sender === 'bot') {
+                // Create profile container
+                const profileContainer = document.createElement('div');
+                profileContainer.className = 'bot-profile-container';
+                
+                // Create profile image
+                const profileImg = document.createElement('img');
+                profileImg.src = 'assets/foto-akmal.jpeg';
+                profileImg.className = 'bot-profile-img';
+                profileContainer.appendChild(profileImg);
+                
+                // Add thinking status if needed
+                if (text === 'Thinking...') {
+                    const thinkingStatus = document.createElement('div');
+                    thinkingStatus.className = 'thinking-status';
+                    thinkingStatus.textContent = 'Thinking...';
+                    profileContainer.appendChild(thinkingStatus);
+                }
+                
+                // Create message content
+                const messageContent = document.createElement('div');
+                messageContent.className = 'bot-message';
+                messageContent.innerHTML = formatMessageWithLinks(text);
+                
+                // Append both to message div
+                messageDiv.appendChild(profileContainer);
+                messageDiv.appendChild(messageContent);
+            } else {
+                const userMessage = document.createElement('div');
+                userMessage.className = 'user-message';
+                userMessage.textContent = text;
+                messageDiv.appendChild(userMessage);
+            }
+            
+            messages.appendChild(messageDiv);
+            messages.scrollTop = messages.scrollHeight;
+            messageHistory.push({ role: sender === 'user' ? 'user' : 'assistant', content: text });
+        }
+
+        // Update the sendMessage function
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            const sendButton = document.getElementById('sendButton');
+            
+            if (!message || isThinking) return;
+
+            // Check message limit before processing
+            const currentCount = getMessageCount();
+            if (currentCount >= MAX_MESSAGES) {
+                const nextResetTime = new Date(parseInt(localStorage.getItem('lastResetTime')) + RESET_INTERVAL);
+                const formattedTime = nextResetTime.toLocaleTimeString();
+                
+                input.value = '';
+                addMessage(`You've reached your daily message limit (${MAX_MESSAGES} messages). The limit will reset at ${formattedTime}. Please come back later or contact Rio directly!`, 'bot');
+                return;
+            }
+            
+            isThinking = true;
+            input.disabled = true;
+            sendButton.disabled = true;
+            input.style.opacity = '0.7';
+            sendButton.style.opacity = '0.7';
+
+            addMessage(message, 'user');
+            input.value = '';
+
+            const typingIndicator = document.querySelector('.typing-indicator');
+            typingIndicator.style.display = 'flex';
+            
+            try {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+                
+                const profileContainer = document.createElement('div');
+                profileContainer.className = 'bot-profile-container';
+                
+                const profileImg = document.createElement('img');
+                profileImg.src = 'assets/foto-akmal.jpeg';
+                profileImg.className = 'bot-profile-img';
+                profileContainer.appendChild(profileImg);
+                
+                const thinkingMessage = document.createElement('div');
+                thinkingMessage.className = 'bot-message';
+                thinkingMessage.textContent = 'Thinking...';
+                
+                messageDiv.appendChild(profileContainer);
+                messageDiv.appendChild(thinkingMessage);
+                
+                const chatMessages = document.getElementById('chatMessages');
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Send message with history to the API
+                const response = await fetch('/.netlify/functions/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        history: messageHistory
+                    })
+                });
+
+                const data = await response.json();
+                
+                // Remove thinking message
+                messageDiv.remove();
+                
+                // Add AI response
+                addMessage(data.message, 'bot');
+                
+                // Update message history with the new conversation
+                messageHistory = data.history;
+                
+                incrementMessageCount();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+            } finally {
+                isThinking = false;
+                input.disabled = false;
+                sendButton.disabled = false;
+                input.style.opacity = '1';
+                sendButton.style.opacity = '1';
+                input.focus();
+                typingIndicator.style.display = 'none';
+            }
+        }
+
+        // Update the event listener for Enter key
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !isThinking) {
+                sendMessage();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial reset time if not exists
+            if (!localStorage.getItem('lastResetTime')) {
+                localStorage.setItem('lastResetTime', new Date().getTime());
+            }
+            
+            // Update the remaining messages display
+            updateRemainingMessages();
+
+            // Initial greeting message
+            setTimeout(() => {
+                addMessage("Hi! Thank you for visiting my personal website. What would you like to know about me?", 'bot');
+            }, 500);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('userInput');
+            
+            if (!input) {
+                console.error('Input element not found!');
+                return;
+            }
+
+            const questions = [
+                "Hi, what's your question?",
+                "What are Rio's key achievements?",
+                "How can I contact Rio for opportunities?",
+                "What is Rio's leadership experience?",
+                "Tell me about Rio's product development skills",
+                "What makes Rio stand out from other candidates?",
+                "What international experience does Rio have?",
+                "What are Rio's strongest technical skills?",
+                "Has Rio led any significant projects?",
+                "What competitions has Rio won?",
+                "What is Rio's educational background?",
+                "What industries has Rio worked in?",
+                "What are Rio's career goals?",
+                "Does Rio have experience working in teams?"
+            ];
+            
+            let currentIndex = 0;
+            
+            // Set initial placeholder
+            input.placeholder = questions[0];
+            
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % questions.length;
+                input.placeholder = questions[currentIndex];
+            }, 4000);
+        });
+    </script>
+
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable F11 and developer tools
+        document.addEventListener('keydown', function(e) {
+            // Disable F11
+            if (e.keyCode == 122) {
+                e.preventDefault();
+            }
+            
+            // Disable Ctrl+U (view source)
+            if (e.ctrlKey && e.keyCode == 85) {
+                e.preventDefault();
+            }
+            
+            // Disable Ctrl+Shift+I and F12 (developer tools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                e.preventDefault();
+            }
+            if (e.keyCode == 123) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the button
+            const button = document.querySelector('a[href="#chat-section"]');
+            
+            // Add click event listener
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Smooth scroll to chat section
+                document.querySelector('#chat-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('userInput');
+            
+            input.addEventListener('keydown', function(e) {
+                // Check if the pressed key is Tab
+                if (e.key === 'Tab') {
+                    e.preventDefault(); // Prevent default tab behavior
+                    
+                    // Get current placeholder text and set it as input value
+                    const placeholderText = this.placeholder;
+                    this.value = placeholderText;
+                    
+                    // Place cursor at the end of the text
+                    this.setSelectionRange(placeholderText.length, placeholderText.length);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Update the clearChat function to also clear message history
+        function clearChat() {
+            if (window.isClearingChat) return;
+            window.isClearingChat = true;
+
+            const clearButton = document.querySelector('.clear-chat');
+            clearButton.style.opacity = '0.5';
+            clearButton.style.pointerEvents = 'none';
+
+            const userInput = document.getElementById('userInput');
+            const sendButton = document.getElementById('sendButton');
+            const quickButtons = document.querySelectorAll('.quick-btn');
+            const floatingInput = document.getElementById('floatingInput');
+            const messages = document.querySelectorAll('#chatMessages .message');
+            
+            userInput.disabled = true;
+            sendButton.disabled = true;
+            floatingInput.disabled = true;
+            quickButtons.forEach(btn => btn.style.pointerEvents = 'none');
+            
+            userInput.style.opacity = '0.7';
+            sendButton.style.opacity = '0.7';
+            quickButtons.forEach(btn => btn.style.opacity = '0.7');
+            
+            messages.forEach((message, index) => {
+                const randomRotation = Math.random() * 360 - 180;
+                message.style.setProperty('--rotation', `${randomRotation}deg`);
+                message.classList.add('clearing');
+            });
+            
+            setTimeout(() => {
+                const chatMessages = document.getElementById('chatMessages');
+                chatMessages.innerHTML = '';
+                messageHistory = []; // Clear the message history
+                
+                userInput.disabled = false;
+                sendButton.disabled = false;
+                floatingInput.disabled = false;
+                quickButtons.forEach(btn => btn.style.pointerEvents = 'auto');
+                
+                userInput.style.opacity = '1';
+                sendButton.style.opacity = '1';
+                quickButtons.forEach(btn => btn.style.opacity = '1');
+                
+                clearButton.style.opacity = '1';
+                clearButton.style.pointerEvents = 'auto';
+                
+                addMessage("Hi! Thank you for visiting my personal website. What would you like to know about me?", 'bot');
+                
+                userInput.focus();
+
+                updateRemainingMessages();
+
+                setTimeout(() => {
+                    window.isClearingChat = false;
+                }, 2000);
+
+            }, 1000);
+        }
+
+        // Add sound effect for messages
+        function playMessageSound() {
+            const audio = new Audio('path/to/message-sound.mp3'); // Add your sound file
+            audio.volume = 0.2;
+            audio.play().catch(e => console.log('Audio play failed:', e));
+        }
+
+        // Update addMessage function to include timestamps
+        function addMessage(text, sender) {
+            const messages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            
+            if (sender === 'bot') {
+                // Create profile container
+                const profileContainer = document.createElement('div');
+                profileContainer.className = 'bot-profile-container';
+                
+                // Create profile image
+                const profileImg = document.createElement('img');
+                profileImg.src = 'assets/foto-akmal.jpeg';
+                profileImg.className = 'bot-profile-img';
+                profileContainer.appendChild(profileImg);
+                
+                // Add thinking status if needed
+                if (text === 'Thinking...') {
+                    const thinkingStatus = document.createElement('div');
+                    thinkingStatus.className = 'thinking-status';
+                    thinkingStatus.textContent = 'Thinking...';
+                    profileContainer.appendChild(thinkingStatus);
+                }
+                
+                // Create message content
+                const messageContent = document.createElement('div');
+                messageContent.className = 'bot-message';
+                messageContent.innerHTML = formatMessageWithLinks(text);
+                
+                // Append both to message div
+                messageDiv.appendChild(profileContainer);
+                messageDiv.appendChild(messageContent);
+            } else {
+                const userMessage = document.createElement('div');
+                userMessage.className = 'user-message';
+                userMessage.textContent = text;
+                messageDiv.appendChild(userMessage);
+            }
+            
+            messages.appendChild(messageDiv);
+            messages.scrollTop = messages.scrollHeight;
+            messageHistory.push({ role: sender === 'user' ? 'user' : 'assistant', content: text });
+
+            const timestamp = document.createElement('div');
+            timestamp.className = 'message-timestamp';
+            timestamp.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            messageDiv.appendChild(timestamp);
+            playMessageSound();
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingChat = document.querySelector('.floating-chat');
+            const chatSection = document.getElementById('chat-section');
+            const floatingInput = document.getElementById('floatingInput');
+            
+            // Handle scroll events
+            window.addEventListener('scroll', function() {
+                const chatSectionTop = chatSection.offsetTop;
+                const chatSectionBottom = chatSectionTop + chatSection.offsetHeight;
+                const scrollPosition = window.scrollY + window.innerHeight;
+                
+                // Hide floating chat when chat section is visible
+                if (scrollPosition > chatSectionTop && window.scrollY < chatSectionBottom) {
+                    floatingChat.classList.add('hidden');
+                } else {
+                    floatingChat.classList.remove('hidden');
+                    // Restore minimized state if it was minimized
+                    if (localStorage.getItem('chatMinimized') === 'true') {
+                        floatingChat.classList.add('minimized');
+                    }
+                }
+            });
+            
+            // Handle floating chat input
+            floatingInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleFloatingChat();
+                }
+            });
+        });
+
+        function handleFloatingChat() {
+            const floatingInput = document.getElementById('floatingInput');
+            const message = floatingInput.value.trim();
+            
+            // Check message limit before processing
+            const currentCount = getMessageCount();
+            if (currentCount >= MAX_MESSAGES) {
+                const nextResetTime = new Date(parseInt(localStorage.getItem('lastResetTime')) + RESET_INTERVAL);
+                const formattedTime = nextResetTime.toLocaleTimeString();
+                
+                alert(`You've reached your daily message limit (${MAX_MESSAGES} messages). The limit will reset at ${formattedTime}. Please come back later or contact Rio directly!`);
+                floatingInput.value = '';
+                floatingInput.disabled = true; // Disable input when limit is reached
+                return;
+            }
+            
+            if (message) {
+                document.getElementById('chat-section').scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    document.getElementById('userInput').value = message;
+                    floatingInput.value = '';
+                    sendMessage();
+                }, 500);
+            }
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainInput = document.getElementById('userInput');
+            const floatingInput = document.getElementById('floatingInput');
+            
+            const questions = [
+                "Hi, what's your question?",
+                "What are Rio's key achievements?",
+                "How can I contact Rio for opportunities?",
+                "What is Rio's leadership experience?",
+                "Tell me about Rio's product development skills",
+                "What makes Rio stand out from other candidates?",
+                "What international experience does Rio have?",
+                "What are Rio's strongest technical skills?",
+                "Has Rio led any significant projects?",
+                "What competitions has Rio won?",
+                "What is Rio's educational background?",
+                "What industries has Rio worked in?",
+                "What are Rio's career goals?",
+                "Does Rio have experience working in teams?"
+            ];
+            
+            let currentIndex = 0;
+            
+            // Set initial placeholder for both inputs
+            mainInput.placeholder = questions[0];
+            floatingInput.placeholder = questions[0];
+            
+            // Update placeholders periodically
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % questions.length;
+                mainInput.placeholder = questions[currentIndex];
+                floatingInput.placeholder = questions[currentIndex];
+            }, 4000);
+
+            // Add Tab key functionality for floating input
+            floatingInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    const placeholderText = this.placeholder;
+                    this.value = placeholderText;
+                    this.setSelectionRange(placeholderText.length, placeholderText.length);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Add these constants at the top of your script
+        const MAX_MESSAGES = 50;
+        const RESET_INTERVAL = 12 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+        // Add these functions to manage message limits
+        function getMessageCount() {
+            const count = localStorage.getItem('chatMessageCount') || 0;
+            const lastReset = localStorage.getItem('lastResetTime');
+            const currentTime = new Date().getTime();
+
+            // Check if we need to reset the counter
+            if (lastReset && (currentTime - lastReset) >= RESET_INTERVAL) {
+                localStorage.setItem('chatMessageCount', 0);
+                localStorage.setItem('lastResetTime', currentTime);
+                return 0;
+            }
+
+            return parseInt(count);
+        }
+
+        function incrementMessageCount() {
+            const currentCount = getMessageCount();
+            localStorage.setItem('chatMessageCount', currentCount + 1);
+            localStorage.setItem('lastResetTime', localStorage.getItem('lastResetTime') || new Date().getTime());
+            updateRemainingMessages();
+        }
+
+        function updateRemainingMessages() {
+            const remaining = Math.max(0, MAX_MESSAGES - getMessageCount()); // Ensure remaining never goes negative
+            const disclaimer = document.querySelector('.disclaimer');
+            
+            if (remaining === 0) {
+                const nextResetTime = new Date(parseInt(localStorage.getItem('lastResetTime')) + RESET_INTERVAL);
+                const formattedTime = nextResetTime.toLocaleTimeString();
+                disclaimer.innerHTML = `You've reached your daily message limit. Messages will reset at ${formattedTime}. Please come back later or contact Rio directly! 😊`;
+                
+                // Disable inputs when limit is reached
+                document.getElementById('userInput').disabled = true;
+                document.getElementById('sendButton').disabled = true;
+                document.getElementById('floatingInput').disabled = true;
+            } else {
+                disclaimer.innerHTML = `Note: AI responses may not always be accurate... that's why you should interview the real Rio instead! 😉`;
+            }
+        }
+    </script>
+
+    <script>
+        // Add this JavaScript to handle minimizing
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingChat = document.querySelector('.floating-chat');
+            const minimizeBtn = document.querySelector('.minimize-btn');
+            const chatHeader = document.querySelector('.floating-chat-header');
+            
+            // Handle minimize button click
+            minimizeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                floatingChat.classList.toggle('minimized');
+                
+                // Save state to localStorage
+                localStorage.setItem('chatMinimized', floatingChat.classList.contains('minimized'));
+            });
+            
+            // Handle header click to maximize
+            chatHeader.addEventListener('click', function() {
+                if (floatingChat.classList.contains('minimized')) {
+                    floatingChat.classList.remove('minimized');
+                    localStorage.setItem('chatMinimized', false);
+                }
+            });
+            
+            // Restore previous state
+            const wasMinimized = localStorage.getItem('chatMinimized') === 'true';
+            if (wasMinimized) {
+                floatingChat.classList.add('minimized');
+            }
+            
+            // Update existing scroll handling to preserve minimized state
+            window.addEventListener('scroll', function() {
+                const chatSection = document.getElementById('chat-section');
+                const chatSectionTop = chatSection.offsetTop;
+                const chatSectionBottom = chatSectionTop + chatSection.offsetHeight;
+                const scrollPosition = window.scrollY + window.innerHeight;
+                
+                // Hide floating chat when chat section is visible
+                if (scrollPosition > chatSectionTop && window.scrollY < chatSectionBottom) {
+                    floatingChat.classList.add('hidden');
+                } else {
+                    floatingChat.classList.remove('hidden');
+                    // Restore minimized state if it was minimized
+                    if (localStorage.getItem('chatMinimized') === 'true') {
+                        floatingChat.classList.add('minimized');
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Add this JavaScript for the question box minimize functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quickButtons = document.querySelector('.quick-buttons');
+            const minimizeQuestionBox = document.querySelector('.minimize-question-box');
+            
+            // Handle minimize button click
+            minimizeQuestionBox.addEventListener('click', function(e) {
+                e.stopPropagation();
+                quickButtons.classList.toggle('minimized');
+                
+                // Save state to localStorage
+                localStorage.setItem('questionBoxMinimized', quickButtons.classList.contains('minimized'));
+            });
+            
+            // Restore previous state
+            const wasMinimized = localStorage.getItem('questionBoxMinimized') === 'true';
+            if (wasMinimized) {
+                quickButtons.classList.add('minimized');
+            }
+            
+            // Handle clicking the minimized question box to restore
+            quickButtons.addEventListener('click', function() {
+                if (quickButtons.classList.contains('minimized')) {
+                    quickButtons.classList.remove('minimized');
+                    localStorage.setItem('questionBoxMinimized', false);
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
