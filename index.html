@@ -1240,6 +1240,94 @@
             }
         }
 
+        /* Skills Section Styles */
+        .skills-section {
+            padding: 4rem 0;
+            background: var(--pwc-grey-15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 45%, rgba(208, 74, 2, 0.05) 45%, transparent 55%);
+            background-size: 20px 20px;
+        }
+
+        .skills-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .skills-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .skills-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skills-category h3 {
+            color: var(--pwc-orange);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skills-category p {
+            color: var(--pwc-grey-55);
+            line-height: 1.6;
+        }
+
+        .languages-certificates {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .languages, .certificates {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .languages h3, .certificates h3 {
+            color: var(--pwc-orange);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .languages p, .certificates p {
+            color: var(--pwc-grey-55);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .languages-certificates {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Add these styles if not already present */
         .hover-link {
             text-decoration: none;
@@ -2394,8 +2482,8 @@
         <section class="hero container">
             <div class="hero-content">
                 <h1>Rio Anggara</h1>
-                <p>I am an International Business student at Universitas Padjadjaran with a focus on product development and business strategy. I combine academic excellence with practical experience in investment, banking, and technology sectors.</p>
-                <p>Based in Jakarta, Indonesia, I'm passionate about creating innovative solutions and driving business growth through strategic thinking and technology.</p>
+                <p>I am an Applied Bachelor in International Business student at Universitas Padjadjaran with a focus on product development and business strategy. I combine academic excellence with practical experience in consulting, banking, and technology sectors.</p>
+                <p>Based in Jakarta, Indonesia, I'm passionate about creating innovative solutions and driving business growth through strategic thinking and technology. Contact me at +62 888 0114 6881 or rioanggaraclub@gmail.com</p>
                 <a href="#chat-section" class="btn">Get in touch & Ask Rio Anything</a>
             </div>
             <div class="hero-image">
@@ -2432,12 +2520,13 @@
                 <h2 class="section-title">Education</h2>
                 <div class="education-item">
                     <h3><a href="https://www.unpad.ac.id/" class="hover-link">Universitas Padjadjaran</a></h3>
-                    <p class="subtitle">BSc in International Business (2020-2025)</p>
+                    <p class="subtitle">Applied Bachelor in International Business (Sep 2020 – Nov 2025)</p>
                     <p>GPA: 3.72/4.00</p>
                 </div>
                 <div class="education-item">
-                    <h3><a href="https://www.ajou.ac.kr/en/index.do" class="hover-link">Ajou University</a></h3>
-                    <p class="subtitle">Exchange Program (2024)</p>
+                    <h3><a href="https://www.ajou.ac.kr/en/index.do" class="hover-link">Ajou University (아주대학교)</a></h3>
+                    <p class="subtitle">Inter-University Non-degree Exchange Program (Feb 2024 – June 2024)</p>
+                    <p>Suwon, South Korea | College of Business Administration, Major of E-Business</p>
                     <p>GPA: 81.7/100</p>
                 </div>
             </div>
@@ -2458,16 +2547,56 @@
             <div class="container">
                 <h2 class="section-title">Key Experiences</h2>
                 <div class="work-grid">
-                    <div class="work-item" onclick="window.location.href='https://learnitab.com'">
-                        <h3>Founder & Product Owner</h3>
-                        <p>Learnitab | Jun 2024 - Present</p>
-                        <p class="key-points">Leading development of an EdTech browser extension platform, achieving 150+ downloads and 270% growth in user engagement.</p>
+                    <div class="work-item" onclick="window.location.href='https://pwc.com'">
+                        <h3>Business Development VE</h3>
+                        <p>PwC Indonesia | Sep 2025 – Dec 2025 (Expected)</p>
+                        <p class="key-points">Conducting market research, supporting lead generation, preparing client proposals, and managing CRM systems for strategic pursuits.</p>
                     </div>
 
                     <div class="work-item" onclick="window.location.href='https://jago.com'">
-                        <h3>Product Intern</h3>
-                        <p>Bank Jago | Aug 2024 - Feb 2024</p>
-                        <p class="key-points">Driving product strategy and development across key banking functions, with focus on digital transformation and customer experience.</p>
+                        <h3>Strategy & Product Development Intern</h3>
+                        <p>Bank Jago | Aug 2024 – Feb 2025</p>
+                        <p class="key-points">Led comprehensive market analysis across banking functions, supported internal control procedures, and spearheaded competitive analysis of 20+ financial institutions.</p>
+                    </div>
+
+                    <div class="work-item" onclick="window.location.href='https://learnitab.com'">
+                        <h3>Founder & Full-stack Developer</h3>
+                        <p>Learnitab | Jun 2024 - Present</p>
+                        <p class="key-points">Built & launched cross-browser EdTech extension (600+ installs with 250 active users), integrating 10+ tools to streamline student job-readiness.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Technical Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skills-category">
+                        <h3>Data Analysis & Visualization</h3>
+                        <p>SQL (Data Analysis & ETL), Power BI, Tableau, Microsoft Excel (Advanced: Pivot Table, VLOOKUP, IF/INDEX/MATCH, Scenario Modeling, Financial Modelling, Valuation)</p>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Business Systems</h3>
+                        <p>CRM Systems (SAP, Salesforce), Market Research Platforms (Statista, Euromonitor), Microsoft Office Suite (Advanced)</p>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Database & Development</h3>
+                        <p>MongoDB (for Unstructured Data Handling), Full-stack Development, Browser Extension Development</p>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Core Competencies</h3>
+                        <p>Financial & Commercial Analysis, Business Valuation, Strategic Planning, Stakeholder Engagement, Project Execution, Client Advisory, Market Due Diligence, Data Summarization & Dashboarding</p>
+                    </div>
+                </div>
+                <div class="languages-certificates">
+                    <div class="languages">
+                        <h3>Languages</h3>
+                        <p>Bahasa Indonesia (Native), English (Professional) - EF SET English Certificate: 74/100 (C2 Proficient)</p>
+                    </div>
+                    <div class="certificates">
+                        <h3>Additional Certificates</h3>
+                        <p>Certified Export Document Preparator</p>
                     </div>
                 </div>
             </div>
