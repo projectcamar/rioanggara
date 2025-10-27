@@ -6,6 +6,23 @@ const path = require('path');
 app.use(express.json());
 app.use(express.static('public'));
 
+// Password validation endpoint
+app.post('/api/validate-password', (req, res) => {
+  try {
+    const { password } = req.body;
+    const correctPassword = process.env.PORTFOLIO_PASSWORD || 'riora354';
+    
+    if (password === correctPassword) {
+      res.json({ valid: true, message: 'Password correct' });
+    } else {
+      res.json({ valid: false, message: 'Password incorrect' });
+    }
+  } catch (error) {
+    console.error('Password validation error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // Move API call to server-side
 app.post('/api/chat', async (req, res) => {
   try {
