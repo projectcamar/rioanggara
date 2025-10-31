@@ -284,9 +284,216 @@
         .hover-link:hover::after {
             width: 100%;
         }
+
+        /* Gate System Styles */
+        #gate {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #gate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--pwc-orange) 48%, var(--pwc-orange) 52%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--pwc-yellow) 48%, var(--pwc-yellow) 52%, transparent 52%);
+            background-size: 100px 100px;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        #gate::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                 linear-gradient(90deg, transparent 47%, var(--pwc-rose) 47%, var(--pwc-rose) 53%, transparent 53%),
+                 linear-gradient(0deg, transparent 47%, var(--pwc-tangerine) 47%, var(--pwc-tangerine) 53%, transparent 53%);
+            background-size: 80px 80px;
+            opacity: 0.04;
+            z-index: 1;
+        }
+
+        #gate > div {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .gate-input-container {
+            margin-bottom: 1rem;
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            border: 1px solid var(--pwc-grey-15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .gate-input-container > div {
+             display: flex;
+             width: 100%;
+             gap: 1rem;
+             align-items: center;
+             justify-content: center;
+        }
+
+        .gate-input-container input {
+            flex: 1;
+            padding: 0.85rem 1.2rem;
+            border: 2px solid var(--pwc-grey-15);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            padding-right: 40px;
+            min-width: 0;
+        }
+
+        .gate-input-container input:focus {
+            outline: none;
+            border-color: var(--pwc-orange);
+            box-shadow: 0 0 0 3px rgba(208, 74, 2, 0.1);
+        }
+
+        .gate-button {
+            background: var(--pwc-orange);
+            color: white;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            min-width: 120px;
+        }
+
+        .gate-button:hover {
+            background: var(--pwc-tangerine);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(208, 74, 2, 0.2);
+        }
+
+        #wrong {
+            color: var(--pwc-rose);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #wrong a {
+            color: var(--pwc-orange);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+        }
+
+        #wrong a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pwc-orange);
+            transition: width 0.3s ease;
+        }
+
+        #wrong a:hover::after {
+            width: 100%;
+        }
+
+        #togglePassword {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--pwc-grey-55);
+            transition: color 0.3s ease;
+        }
+
+        #togglePassword:hover {
+            color: var(--pwc-orange);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #main-content {
+            display: none;
+        }
     </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Gate System -->
+    <div id="gate">
+        <div style="text-align: center; max-width: 800px; padding: 0 2rem; position: relative;">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--pwc-grey-90); margin-bottom: 1.5rem; position: relative; padding-left: 20px;">
+                Welcome to Rio's Private Portfolio
+                <div style="position: absolute; left: 0; top: 15%; height: 70%; width: 6px; background: var(--pwc-orange); border-radius: 3px;"></div>
+            </h2>
+            <p style="color: var(--pwc-grey-55); margin-bottom: 2rem; line-height: 1.8; font-family: 'Inter', sans-serif; font-size: 1.1rem;">
+                Hi and thank you for stopping by! This page is specially made for <strong>HR professionals and selected guests</strong>. If you're here after <strong>receiving my CV</strong>, you'll find the <strong>password included there</strong> to <strong>unlock the full content</strong>.
+                <br><br>
+                If you're not an HR professional or didn't receive an invitation but are still interested in my work, I'd love to connect ? feel free to reach out via <a href="https://www.linkedin.com/in/rionggara/" target="_blank" style="color: var(--pwc-orange); text-decoration: none; font-weight: 500; position: relative;">LinkedIn</a> anytime.
+                <br><br>
+                Put the password below ??
+            </p>
+            <div class="gate-input-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); border: 1px solid var(--pwc-grey-15); display: flex; flex-direction: column; align-items: center; margin: 0 auto; max-width: 400px; width: 100%;">
+                <div style="display: flex; width: 100%; gap: 1rem; align-items: center; justify-content: center;">
+                    <div style="position: relative; flex: 1; min-width: 0;">
+                        <input type="password" id="passwordInput" placeholder="Enter password" style="font-family: 'Inter', sans-serif; font-size: 1rem; width: 100%; padding-right: 40px;">
+                        <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--pwc-grey-55);">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <button class="gate-button" onclick="checkPassword()" style="font-family: 'Inter', sans-serif; font-weight: 500;">Enter</button>
+                </div>
+            </div>
+            <p id="wrong" style="font-family: 'Inter', sans-serif; margin-top: 1rem;"></p>
+        </div>
+    </div>
+
+    <div id="main-content">
     <header>
         <div class="container nav">
             <a href="index.html" class="logo">RIO ANGGARA</a>
@@ -302,7 +509,7 @@
         <h1>A Snippet of My Story</h1>
 
         <div class="story-content">
-            <p>My journey into problem-solving began early in my childhood. As an elementary school student, I developed a deep fascination for brain games and puzzles, especially through activities like LEGO building sets. Every Children's Day and birthday, I eagerly collected new LEGO sets, meticulously following instructions to construct intricate designs. What fascinated me most was not just assembling pieces, but the creative process of imagining and bringing something new to life. This early exposure to problem-solving ignited a passion for understanding systems and finding innovative solutions—an enthusiasm that would shape my future academic and entrepreneurial endeavors.</p>
+            <p>My journey into problem-solving began early in my childhood. As an elementary school student, I developed a deep fascination for brain games and puzzles, especially through activities like LEGO building sets. Every Children's Day and birthday, I eagerly collected new LEGO sets, meticulously following instructions to construct intricate designs. What fascinated me most was not just assembling pieces, but the creative process of imagining and bringing something new to life. This early exposure to problem-solving ignited a passion for understanding systems and finding innovative solutions?an enthusiasm that would shape my future academic and entrepreneurial endeavors.</p>
 
             <p>High school marked a pivotal period of growth and exploration for me, particularly in terms of leadership and community engagement. I actively participated in various school committees and student organizations, where I learned invaluable lessons in teamwork, communication, and organizational management. Serving as a committee member in the student council allowed me to lead initiatives, organize events, and advocate for student interests. These experiences not only honed my leadership skills but also sparked a deep-seated interest in creating positive change within my community. They laid the groundwork for my future aspirations in organizational leadership and community building.</p>
 
@@ -340,10 +547,105 @@
         </div>
     </section>
 
+    </div>
+
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    
+    <!-- Password Gate Script -->
+    <script>
+        const gate = document.getElementById("gate");
+        const mainContent = document.getElementById("main-content");
+        const wrong = document.getElementById("wrong");
+
+        async function checkPassword() {
+            const input = document.getElementById("passwordInput").value;
+            
+            try {
+                const response = await fetch('/.netlify/functions/verify-password', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ password: input })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const authData = {
+                        timestamp: new Date().getTime(),
+                        auth: "yes"
+                    };
+                    localStorage.setItem("rioAuth", JSON.stringify(authData));
+                    showContent();
+                    wrong.innerHTML = '';
+                } else {
+                    wrong.innerHTML = 'Wrong Password, curious enough? <a href="https://www.linkedin.com/in/rionggara/" target="_blank">ask Rio personally</a>';
+                    document.getElementById("passwordInput").value = "";
+                }
+            } catch (error) {
+                console.error('Password verification error:', error);
+                wrong.innerHTML = 'Connection error. Please try again.';
+            }
+        }
+
+        function showContent() {
+            gate.style.display = "none";
+            mainContent.style.display = "block";
+        }
+
+        function checkAuth() {
+            const authData = localStorage.getItem("rioAuth");
+            if (authData) {
+                try {
+                    const parsedData = JSON.parse(authData);
+                    const currentTime = new Date().getTime();
+                    const fiveHoursInMs = 5 * 60 * 60 * 1000; // 5 hours in milliseconds
+                    
+                    // Check if auth exists and hasn't expired (5 hours)
+                    if (parsedData.auth === "yes" && 
+                        parsedData.timestamp && 
+                        (currentTime - parsedData.timestamp) < fiveHoursInMs) {
+                        showContent();
+                        return;
+                    } else {
+                        // Clear expired auth
+                        localStorage.removeItem("rioAuth");
+                    }
+                } catch (e) {
+                    console.error("Error parsing auth data");
+                    localStorage.removeItem("rioAuth");
+                }
+            }
+            gate.style.display = "flex";
+            mainContent.style.display = "none";
+        }
+
+        checkAuth();
+
+        document.getElementById("passwordInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        // Toggle password visibility
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('passwordInput');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        }
+    </script>
+
     <script>
         // Disable right-click
         document.addEventListener('contextmenu', function(e) {
