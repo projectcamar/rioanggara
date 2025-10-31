@@ -2875,13 +2875,22 @@
             if (authData) {
                 try {
                     const parsedData = JSON.parse(authData);
-                    // Check if the auth is still valid (optional: you can add expiration logic here)
-                    if (parsedData.auth === "yes") {
+                    const currentTime = new Date().getTime();
+                    const fiveHoursInMs = 5 * 60 * 60 * 1000; // 5 hours in milliseconds
+                    
+                    // Check if auth exists and hasn't expired (5 hours)
+                    if (parsedData.auth === "yes" && 
+                        parsedData.timestamp && 
+                        (currentTime - parsedData.timestamp) < fiveHoursInMs) {
                         showContent();
                         return;
+                    } else {
+                        // Clear expired auth
+                        localStorage.removeItem("rioAuth");
                     }
                 } catch (e) {
                     console.error("Error parsing auth data");
+                    localStorage.removeItem("rioAuth");
                 }
             }
             // If no valid auth data, show the gate
