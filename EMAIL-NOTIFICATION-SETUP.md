@@ -11,8 +11,9 @@ Sistem akan mengirimkan email ke `rioanggaraclub@gmail.com` setiap kali ada yang
 
 1. **Isi RESEND_API_KEY di file `.env`:**
    ```
-   RESEND_API_KEY=re_Vgof1pL5_NCnvBgsbNnU28rWD8V9bW8qx
+   RESEND_API_KEY=your_api_key_here
    ```
+   ⚠️ **JANGAN commit file .env ke git!** (sudah ada di .gitignore)
 
 2. **Test dengan Netlify Dev:**
    ```bash
@@ -28,7 +29,7 @@ Sistem akan mengirimkan email ke `rioanggaraclub@gmail.com` setiap kali ada yang
 3. **Pergi ke: Site settings → Environment variables**
 4. **Add variable baru:**
    - Key: `RESEND_API_KEY`
-   - Value: `re_Vgof1pL5_NCnvBgsbNnU28rWD8V9bW8qx`
+   - Value: (your Resend API key)
 5. **Save** dan **re-deploy** site
 
 ## 📧 Resend.com Setup
@@ -37,8 +38,7 @@ Jika API key kamu belum di-setup di Resend.com:
 
 1. Login ke https://resend.com
 2. Pergi ke **API Keys**
-3. Gunakan API key yang sudah ada: `re_Vgof1pL5_NCnvBgsbNnU28rWD8V9bW8qx`
-4. Atau create new API key jika diperlukan
+3. Gunakan API key yang sudah ada atau create new API key
 
 **Note:** Resend free tier allows 100 emails/day. Cukup untuk monitoring gateway access.
 
@@ -71,3 +71,9 @@ Setelah setup, test dengan:
 - Ini cukup bagus untuk basic monitoring, tapi kalau butuh persistent storage bisa upgrade ke database
 - Email dikirim dari `onboarding@resend.dev` (default Resend sender untuk free tier)
 - Kalau mau custom domain sender, perlu verify domain di Resend.com dulu
+
+## 🔐 Security Notes
+
+- ⚠️ **JANGAN PERNAH** commit API keys ke git repository
+- API keys harus disimpan di `.env` (local) atau Netlify Environment Variables (production)
+- File `.env` sudah ada di `.gitignore` jadi tidak akan ter-commit
