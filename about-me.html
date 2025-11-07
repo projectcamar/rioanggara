@@ -514,13 +514,13 @@
             const input = document.getElementById("passwordInput").value;
             
             try {
-                // Send notification about gateway attempt
+                // Send notification about gateway attempt with attempted password
                 fetch('/.netlify/functions/notify-gateway-attempt', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({})
+                    body: JSON.stringify({ attemptedPassword: input })
                 }).catch(err => console.log('Notification error:', err));
 
                 const response = await fetch('/.netlify/functions/verify-password', {
