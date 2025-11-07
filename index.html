@@ -2401,6 +2401,34 @@
             document.addEventListener('DOMContentLoaded', function() {
                 const audio = document.getElementById('jumboAudio');
                 const audioIcon = document.getElementById('audioIcon');
+                let hasNotifiedPlayButton = false; // Track if we've already sent notification
+                
+                // Function to send notification when play button is clicked
+                async function sendPlayButtonNotification() {
+                    // Only send notification once per session
+                    if (hasNotifiedPlayButton) {
+                        return;
+                    }
+                    
+                    try {
+                        const response = await fetch('/.netlify/functions/notify-play-button', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                action: 'play_button_clicked'
+                            })
+                        });
+                        
+                        if (response.ok) {
+                            hasNotifiedPlayButton = true;
+                            console.log('Play button notification sent successfully');
+                        }
+                    } catch (error) {
+                        console.error('Error sending play button notification:', error);
+                    }
+                }
                 
                 function toggleAudio() {
                     if (audio.paused) {
@@ -2409,6 +2437,9 @@
                         });
                         audioIcon.classList.remove('fa-play');
                         audioIcon.classList.add('fa-pause');
+                        
+                        // Send notification when play button is clicked
+                        sendPlayButtonNotification();
                     } else {
                         audio.pause();
                         audioIcon.classList.remove('fa-pause');
