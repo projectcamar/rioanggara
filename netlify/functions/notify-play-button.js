@@ -49,18 +49,22 @@ exports.handler = async function(event, context) {
     }
 
     try {
-        // Get the visitor's IP address
-        const visitorIP = event.headers['x-forwarded-for'] || 
-                         event.headers['x-nf-client-connection-ip'] || 
-                         'unknown';
+        // Get the visitor's IP address (all IPs in chain for display)
+        const visitorIPFull = event.headers['x-forwarded-for'] || 
+                              event.headers['x-nf-client-connection-ip'] || 
+                              'unknown';
+        
+        // Extract the actual client IP (first IP in x-forwarded-for chain)
+        // Format: "client_ip, proxy1_ip, proxy2_ip"
+        const clientIP = visitorIPFull.split(',')[0].trim();
 
         // Track play button clicks by IP
-        const currentClicks = ipPlayClicks.get(visitorIP) || 0;
+        const currentClicks = ipPlayClicks.get(clientIP) || 0;
         const clickNumber = currentClicks + 1;
-        ipPlayClicks.set(visitorIP, clickNumber);
+        ipPlayClicks.set(clientIP, clickNumber);
 
-        // Get geolocation data based on IP address
-        const geolocation = await getGeolocation(visitorIP);
+        // Get geolocation data based on actual client IP
+        const geolocation = await getGeolocation(clientIP);
 
         // Initialize Resend with API key from environment variable
         const resendApiKey = process.env.RESEND_API_KEY;
@@ -129,7 +133,10 @@ exports.handler = async function(event, context) {
                             
                             <div class="info-box">
                                 <div class="info-label">📍 Visitor IP Address</div>
-                                <div class="info-value">${visitorIP}</div>
+                                <div class="info-value">
+                                    <strong>Client IP:</strong> ${clientIP}<br>
+                                    <span style="font-size: 12px; color: #666;">Full Chain: ${visitorIPFull}</span>
+                                </div>
                             </div>
                             
                             ${geolocation ? `
@@ -144,7 +151,12 @@ exports.handler = async function(event, context) {
                                     ${geolocation.org ? `<strong>🏢 Organization:</strong> ${geolocation.org}` : ''}
                                 </div>
                             </div>
-                            ` : ''}
+                            ` : `
+                            <div class="info-box" style="background: #fff3cd; border-left-color: #ffc107;">
+                                <div class="info-label">⚠️ Geolocation Info</div>
+                                <div class="info-value">Geolocation data could not be retrieved for IP: ${clientIP}</div>
+                            </div>
+                            `}
                             
                             <div class="info-box">
                                 <div class="info-label">🕐 Timestamp</div>
@@ -176,7 +188,8 @@ exports.handler = async function(event, context) {
             body: JSON.stringify({
                 success: true,
                 clickNumber: clickNumber,
-                ip: visitorIP,
+                clientIP: clientIP,
+                ipChain: visitorIPFull,
                 geolocation: geolocation
             })
         };
