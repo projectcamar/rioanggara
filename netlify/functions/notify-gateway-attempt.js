@@ -4,6 +4,42 @@ const { Resend } = require('resend');
 // In production, you might want to use a database
 const ipAttempts = new Map();
 
+// Function to get geolocation from IP address
+async function getGeolocation(ip) {
+    try {
+        // Skip geolocation for unknown or local IPs
+        if (!ip || ip === 'unknown' || ip.startsWith('127.') || ip.startsWith('192.168.') || ip.startsWith('10.')) {
+            return null;
+        }
+
+        // Use ip-api.com for free geolocation lookup (no API key required)
+        // Limit: 45 requests per minute
+        const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,query`);
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            return {
+                country: data.country,
+                countryCode: data.countryCode,
+                region: data.regionName,
+                city: data.city,
+                zip: data.zip,
+                latitude: data.lat,
+                longitude: data.lon,
+                timezone: data.timezone,
+                isp: data.isp,
+                org: data.org,
+                as: data.as
+            };
+        }
+        
+        return null;
+    } catch (error) {
+        console.error('Error fetching geolocation:', error);
+        return null;
+    }
+}
+
 exports.handler = async function(event, context) {
     // Only allow POST requests
     if (event.httpMethod !== 'POST') {
@@ -26,6 +62,9 @@ exports.handler = async function(event, context) {
         const currentAttempts = ipAttempts.get(visitorIP) || 0;
         const attemptNumber = currentAttempts + 1;
         ipAttempts.set(visitorIP, attemptNumber);
+
+        // Get geolocation data based on IP address
+        const geolocation = await getGeolocation(visitorIP);
 
         // Initialize Resend with API key from environment variable
         const resendApiKey = process.env.RESEND_API_KEY;
@@ -95,6 +134,20 @@ exports.handler = async function(event, context) {
                                 <div class="info-value">${visitorIP}</div>
                             </div>
                             
+                            ${geolocation ? `
+                            <div class="info-box">
+                                <div class="info-label">🌍 Visitor Geolocation</div>
+                                <div class="info-value">
+                                    <strong>📍 Location:</strong> ${geolocation.city || 'Unknown'}${geolocation.region ? ', ' + geolocation.region : ''}, ${geolocation.country || 'Unknown'} ${geolocation.countryCode ? '(' + geolocation.countryCode + ')' : ''}<br>
+                                    ${geolocation.zip ? `<strong>📮 ZIP:</strong> ${geolocation.zip}<br>` : ''}
+                                    ${geolocation.timezone ? `<strong>🕐 Timezone:</strong> ${geolocation.timezone}<br>` : ''}
+                                    ${geolocation.latitude && geolocation.longitude ? `<strong>📌 Coordinates:</strong> ${geolocation.latitude}, ${geolocation.longitude}<br>` : ''}
+                                    ${geolocation.isp ? `<strong>🌐 ISP:</strong> ${geolocation.isp}<br>` : ''}
+                                    ${geolocation.org ? `<strong>🏢 Organization:</strong> ${geolocation.org}` : ''}
+                                </div>
+                            </div>
+                            ` : ''}
+                            
                             <div class="info-box">
                                 <div class="info-label">🕐 Timestamp</div>
                                 <div class="info-value">${timestamp}</div>
@@ -125,7 +178,8 @@ exports.handler = async function(event, context) {
             body: JSON.stringify({
                 success: true,
                 attemptNumber: attemptNumber,
-                ip: visitorIP
+                ip: visitorIP,
+                geolocation: geolocation
             })
         };
     } catch (error) {
