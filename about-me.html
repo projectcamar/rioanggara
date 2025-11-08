@@ -636,5 +636,33 @@
             }
         });
     </script>
+
+    <!-- Page Visit Tracking -->
+    <script>
+        // Track page visit and send notification
+        (async function() {
+            try {
+                const response = await fetch('/.netlify/functions/notify-page-visit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        pageName: 'about-me',
+                        pageUrl: window.location.href
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Visit tracked successfully:', data);
+                } else {
+                    console.warn('Failed to track visit:', response.status);
+                }
+            } catch (error) {
+                console.warn('Error tracking visit:', error);
+            }
+        })();
+    </script>
 </body>
 </html> 
